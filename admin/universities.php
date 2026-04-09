@@ -17,11 +17,11 @@ if (isset($_POST['action']) && $_POST['action'] == 'delete') {
     $id = (int)$_POST['id'];
     $item = $pdo->query("SELECT university_logo, university_banner FROM university WHERE id=$id")->fetch();
     
-    if ($item['university_logo'] && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/universities/' . $item['university_logo'])) {
-        unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/universities/' . $item['university_logo']);
+    if ($item['university_logo'] && file_exists(__DIR__ . '/../uploads/universities/' . $item['university_logo'])) {
+        unlink(__DIR__ . '/../uploads/universities/' . $item['university_logo']);
     }
-    if ($item['university_banner'] && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/universities/' . $item['university_banner'])) {
-        unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/universities/' . $item['university_banner']);
+    if ($item['university_banner'] && file_exists(__DIR__ . '/../uploads/universities/' . $item['university_banner'])) {
+        unlink(__DIR__ . '/../uploads/universities/' . $item['university_banner']);
     }
     
     $pdo->prepare("DELETE FROM university WHERE id = ?")->execute([$id]);
@@ -54,14 +54,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
         $old = $pdo->query("SELECT university_logo, university_banner FROM university WHERE id=".(int)$id)->fetch();
         
         if ($university_logo) {
-            if ($old['university_logo'] && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/universities/' . $old['university_logo'])) {
-                unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/universities/' . $old['university_logo']);
+            if ($old['university_logo'] && file_exists(__DIR__ . '/../uploads/universities/' . $old['university_logo'])) {
+                unlink(__DIR__ . '/../uploads/universities/' . $old['university_logo']);
             }
         } else { $university_logo = $old['university_logo']; }
         
         if ($university_banner) {
-            if ($old['university_banner'] && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/universities/' . $old['university_banner'])) {
-                unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/universities/' . $old['university_banner']);
+            if ($old['university_banner'] && file_exists(__DIR__ . '/../uploads/universities/' . $old['university_banner'])) {
+                unlink(__DIR__ . '/../uploads/universities/' . $old['university_banner']);
             }
         } else { $university_banner = $old['university_banner']; }
 
@@ -113,7 +113,7 @@ $countries = $pdo->query("SELECT country_name FROM country ORDER BY country_name
                     <td class="p-4">
                         <?php if($item['university_logo']): ?>
                         <div class="w-16 h-10 object-contain overflow-hidden flex items-center bg-slate-50 p-1 border rounded">
-                            <img src="/uploads/universities/<?php echo $item['university_logo']; ?>" class="max-h-full max-w-full">
+                            <img src="../uploads/universities/<?php echo $item['university_logo']; ?>" class="max-h-full max-w-full">
                         </div>
                         <?php endif; ?>
                     </td>

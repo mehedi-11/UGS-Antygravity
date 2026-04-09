@@ -15,8 +15,8 @@ require_once __DIR__ . '/components/header.php';
 if (isset($_POST['action']) && $_POST['action'] == 'delete') {
     $id = (int)$_POST['id'];
     $item = $pdo->query("SELECT image FROM services WHERE id=$id")->fetch();
-    if ($item && $item['image'] && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/services/' . $item['image'])) {
-        unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/services/' . $item['image']);
+    if ($item && $item['image'] && file_exists(__DIR__ . '/../uploads/services/' . $item['image'])) {
+        unlink(__DIR__ . '/../uploads/services/' . $item['image']);
     }
     $pdo->prepare("DELETE FROM services WHERE id = ?")->execute([$id]);
     set_flash_msg('success', 'Service deleted.');
@@ -40,8 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
     if ($id) {
         $old = $pdo->query("SELECT image FROM services WHERE id=".(int)$id)->fetch();
         if ($image) {
-            if ($old && $old['image'] && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/services/' . $old['image'])) {
-                unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/services/' . $old['image']);
+            if ($old && $old['image'] && file_exists(__DIR__ . '/../uploads/services/' . $old['image'])) {
+                unlink(__DIR__ . '/../uploads/services/' . $old['image']);
             }
         } else {
             $image = $old['image'] ?? '';
@@ -93,7 +93,7 @@ $services = $pdo->query("SELECT * FROM services ORDER BY position ASC")->fetchAl
                     <td class="p-4">
                         <?php if($item['image']): ?>
                         <div class="w-16 h-12 object-cover overflow-hidden rounded border inline-block">
-                            <img src="/uploads/services/<?php echo $item['image']; ?>" class="w-full h-full object-cover">
+                            <img src="../uploads/services/<?php echo $item['image']; ?>" class="w-full h-full object-cover">
                         </div>
                         <?php elseif($item['icon_class']): ?>
                         <div class="w-12 h-12 bg-orange-100 text-secondary rounded flex items-center justify-center text-2xl border border-orange-200">

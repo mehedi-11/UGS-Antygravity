@@ -16,8 +16,8 @@ require_once __DIR__ . '/components/header.php';
 if (isset($_POST['action']) && $_POST['action'] == 'delete') {
     $id = (int)$_POST['id'];
     $item = $pdo->query("SELECT event_image FROM event WHERE id=$id")->fetch();
-    if ($item && $item['event_image'] && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/events/' . $item['event_image'])) {
-        unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/events/' . $item['event_image']);
+    if ($item && $item['event_image'] && file_exists(__DIR__ . '/../uploads/events/' . $item['event_image'])) {
+        unlink(__DIR__ . '/../uploads/events/' . $item['event_image']);
     }
     $pdo->prepare("DELETE FROM event WHERE id = ?")->execute([$id]);
     set_flash_msg('success', 'Event deleted.');
@@ -43,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
     if ($id) {
         $old = $pdo->query("SELECT event_image FROM event WHERE id=".(int)$id)->fetch();
         if ($event_image) {
-            if ($old && $old['event_image'] && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/events/' . $old['event_image'])) {
-                unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/events/' . $old['event_image']);
+            if ($old && $old['event_image'] && file_exists(__DIR__ . '/../uploads/events/' . $old['event_image'])) {
+                unlink(__DIR__ . '/../uploads/events/' . $old['event_image']);
             }
         } else {
             $event_image = $old['event_image'] ?? '';
@@ -96,7 +96,7 @@ $events = $pdo->query("SELECT * FROM event ORDER BY position ASC, date_time DESC
                     <td class="p-4">
                         <?php if($item['event_image']): ?>
                         <div class="w-16 h-12 object-cover overflow-hidden rounded border">
-                            <img src="/uploads/events/<?php echo $item['event_image']; ?>" class="w-full h-full object-cover">
+                            <img src="../uploads/events/<?php echo $item['event_image']; ?>" class="w-full h-full object-cover">
                         </div>
                         <?php endif; ?>
                     </td>

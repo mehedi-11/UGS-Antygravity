@@ -23,8 +23,8 @@ if (isset($_POST['action'])) {
         set_flash_msg('success', 'Testimonial rejected.');
     } elseif ($_POST['action'] == 'delete') {
         $item = $pdo->query("SELECT image FROM testimonial WHERE id=$id")->fetch();
-        if ($item && $item['image'] && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/testimonials/' . $item['image'])) {
-            unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/testimonials/' . $item['image']);
+        if ($item && $item['image'] && file_exists(__DIR__ . '/../uploads/testimonials/' . $item['image'])) {
+            unlink(__DIR__ . '/../uploads/testimonials/' . $item['image']);
         }
         $pdo->prepare("DELETE FROM testimonial WHERE id = ?")->execute([$id]);
         set_flash_msg('success', 'Testimonial deleted.');
@@ -57,7 +57,7 @@ $testimonials = $pdo->query("SELECT * FROM testimonial ORDER BY id DESC")->fetch
                 <tr class="hover:bg-slate-50 border-b">
                     <td class="p-4">
                         <div class="w-12 h-12 rounded-full overflow-hidden border">
-                            <img src="<?php echo $item['image'] ? '/uploads/testimonials/'.$item['image'] : 'https://ui-avatars.com/api/?name='.urlencode($item['name']); ?>" class="w-full h-full object-cover">
+                            <img src="<?php echo $item['image'] ? '../uploads/testimonials/'.$item['image'] : 'https://ui-avatars.com/api/?name='.urlencode($item['name']); ?>" class="w-full h-full object-cover">
                         </div>
                     </td>
                     <td class="p-4">

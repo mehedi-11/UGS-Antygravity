@@ -15,8 +15,8 @@ require_once __DIR__ . '/components/header.php';
 if (isset($_POST['action']) && $_POST['action'] == 'delete') {
     $id = (int)$_POST['id'];
     $item = $pdo->query("SELECT image FROM achievement WHERE id=$id")->fetch();
-    if ($item && $item['image'] && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/achievement/' . $item['image'])) {
-        unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/achievement/' . $item['image']);
+    if ($item && $item['image'] && file_exists(__DIR__ . '/../uploads/achievement/' . $item['image'])) {
+        unlink(__DIR__ . '/../uploads/achievement/' . $item['image']);
     }
     $pdo->prepare("DELETE FROM achievement WHERE id = ?")->execute([$id]);
     set_flash_msg('success', 'Achievement deleted.');
@@ -39,8 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
     if ($id) {
         $old = $pdo->query("SELECT image FROM achievement WHERE id=".(int)$id)->fetch();
         if ($image) {
-            if ($old && $old['image'] && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/achievement/' . $old['image'])) {
-                unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/achievement/' . $old['image']);
+            if ($old && $old['image'] && file_exists(__DIR__ . '/../uploads/achievement/' . $old['image'])) {
+                unlink(__DIR__ . '/../uploads/achievement/' . $old['image']);
             }
         } else {
             $image = $old['image'] ?? '';
@@ -92,7 +92,7 @@ $achievements = $pdo->query("SELECT * FROM achievement ORDER BY position ASC")->
                     <td class="p-4">
                         <?php if($item['image']): ?>
                         <div class="w-16 h-12 object-cover overflow-hidden rounded border">
-                            <img src="/uploads/achievement/<?php echo $item['image']; ?>" class="w-full h-full object-cover">
+                            <img src="../uploads/achievement/<?php echo $item['image']; ?>" class="w-full h-full object-cover">
                         </div>
                         <?php endif; ?>
                     </td>

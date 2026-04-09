@@ -17,11 +17,11 @@ if (isset($_POST['action']) && $_POST['action'] == 'delete') {
     $id = (int)$_POST['id'];
     $item = $pdo->query("SELECT country_image, banner_image FROM country WHERE id=$id")->fetch();
     
-    if ($item['country_image'] && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/countries/' . $item['country_image'])) {
-        unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/countries/' . $item['country_image']);
+    if ($item['country_image'] && file_exists(__DIR__ . '/../uploads/countries/' . $item['country_image'])) {
+        unlink(__DIR__ . '/../uploads/countries/' . $item['country_image']);
     }
-    if ($item['banner_image'] && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/countries/' . $item['banner_image'])) {
-        unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/countries/' . $item['banner_image']);
+    if ($item['banner_image'] && file_exists(__DIR__ . '/../uploads/countries/' . $item['banner_image'])) {
+        unlink(__DIR__ . '/../uploads/countries/' . $item['banner_image']);
     }
     
     $pdo->prepare("DELETE FROM country WHERE id = ?")->execute([$id]);
@@ -54,16 +54,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
         $old = $pdo->query("SELECT country_image, banner_image FROM country WHERE id=".(int)$id)->fetch();
         
         if ($country_image) {
-            if ($old['country_image'] && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/countries/' . $old['country_image'])) {
-                unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/countries/' . $old['country_image']);
+            if ($old['country_image'] && file_exists(__DIR__ . '/../uploads/countries/' . $old['country_image'])) {
+                unlink(__DIR__ . '/../uploads/countries/' . $old['country_image']);
             }
         } else {
             $country_image = $old['country_image'];
         }
         
         if ($banner_image) {
-            if ($old['banner_image'] && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/countries/' . $old['banner_image'])) {
-                unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/countries/' . $old['banner_image']);
+            if ($old['banner_image'] && file_exists(__DIR__ . '/../uploads/countries/' . $old['banner_image'])) {
+                unlink(__DIR__ . '/../uploads/countries/' . $old['banner_image']);
             }
         } else {
             $banner_image = $old['banner_image'];
@@ -114,7 +114,7 @@ $countries = $pdo->query("SELECT * FROM country ORDER BY position ASC")->fetchAl
                     <td class="p-4">
                         <?php if($item['country_image']): ?>
                         <div class="w-16 h-10 object-cover overflow-hidden rounded border">
-                            <img src="/uploads/countries/<?php echo $item['country_image']; ?>" class="w-full h-full object-cover">
+                            <img src="../uploads/countries/<?php echo $item['country_image']; ?>" class="w-full h-full object-cover">
                         </div>
                         <?php endif; ?>
                     </td>

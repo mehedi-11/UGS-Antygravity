@@ -15,8 +15,8 @@ require_once __DIR__ . '/components/header.php';
 if (isset($_POST['action']) && $_POST['action'] == 'delete') {
     $id = (int)$_POST['id'];
     $item = $pdo->query("SELECT image FROM gallery WHERE id=$id")->fetch();
-    if ($item && $item['image'] && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/gallery/' . $item['image'])) {
-        unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/gallery/' . $item['image']);
+    if ($item && $item['image'] && file_exists(__DIR__ . '/../uploads/gallery/' . $item['image'])) {
+        unlink(__DIR__ . '/../uploads/gallery/' . $item['image']);
     }
     $pdo->prepare("DELETE FROM gallery WHERE id = ?")->execute([$id]);
     set_flash_msg('success', 'Image deleted.');
@@ -39,8 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
     if ($id) {
         $old = $pdo->query("SELECT image FROM gallery WHERE id=".(int)$id)->fetch();
         if ($image) {
-            if ($old && $old['image'] && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/gallery/' . $old['image'])) {
-                unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/gallery/' . $old['image']);
+            if ($old && $old['image'] && file_exists(__DIR__ . '/../uploads/gallery/' . $old['image'])) {
+                unlink(__DIR__ . '/../uploads/gallery/' . $old['image']);
             }
         } else {
             $image = $old['image'] ?? '';
@@ -91,8 +91,8 @@ $gallery = $pdo->query("SELECT * FROM gallery ORDER BY position ASC")->fetchAll(
                     <td class="p-4 text-slate-400"><i class="ph ph-dots-six-vertical text-xl"></i></td>
                     <td class="p-4">
                         <?php if($item['image']): ?>
-                        <div class="w-24 h-16 object-cover overflow-hidden rounded border cursor-pointer hover:opacity-80 transition" onclick="window.open('/uploads/gallery/<?php echo $item['image']; ?>', '_blank')">
-                            <img src="/uploads/gallery/<?php echo $item['image']; ?>" class="w-full h-full object-cover">
+                        <div class="w-24 h-16 object-cover overflow-hidden rounded border cursor-pointer hover:opacity-80 transition" onclick="window.open('../uploads/gallery/<?php echo $item['image']; ?>', '_blank')">
+                            <img src="../uploads/gallery/<?php echo $item['image']; ?>" class="w-full h-full object-cover">
                         </div>
                         <?php endif; ?>
                     </td>

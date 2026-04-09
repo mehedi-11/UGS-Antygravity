@@ -16,8 +16,8 @@ require_once __DIR__ . '/components/header.php';
 if (isset($_POST['action']) && $_POST['action'] == 'delete') {
     $id = (int)$_POST['id'];
     $team = $pdo->query("SELECT profile_image FROM team WHERE id=$id")->fetch();
-    if ($team && $team['profile_image'] && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/team/' . $team['profile_image'])) {
-        unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/team/' . $team['profile_image']);
+    if ($team && $team['profile_image'] && file_exists(__DIR__ . '/../uploads/team/' . $team['profile_image'])) {
+        unlink(__DIR__ . '/../uploads/team/' . $team['profile_image']);
     }
     $pdo->prepare("DELETE FROM team WHERE id = ?")->execute([$id]);
     set_flash_msg('success', 'Member deleted.');
@@ -46,8 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
     if ($id) {
         $old = $pdo->query("SELECT profile_image FROM team WHERE id=".(int)$id)->fetch();
         if ($profile_image) {
-            if ($old && $old['profile_image'] && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/team/' . $old['profile_image'])) {
-                unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/team/' . $old['profile_image']);
+            if ($old && $old['profile_image'] && file_exists(__DIR__ . '/../uploads/team/' . $old['profile_image'])) {
+                unlink(__DIR__ . '/../uploads/team/' . $old['profile_image']);
             }
         } else {
             $profile_image = $old['profile_image'] ?? '';
@@ -101,7 +101,7 @@ $team_members = $pdo->query("SELECT * FROM team ORDER BY position ASC")->fetchAl
                     <td class="p-4">
                         <?php if($member['profile_image']): ?>
                         <div class="w-12 h-12 rounded-full overflow-hidden border">
-                            <img src="/uploads/team/<?php echo $member['profile_image']; ?>" class="w-full h-full object-cover">
+                            <img src="../uploads/team/<?php echo $member['profile_image']; ?>" class="w-full h-full object-cover">
                         </div>
                         <?php else: ?>
                         <div class="w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center">

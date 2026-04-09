@@ -45,8 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $uploaded = upload_image($_FILES['logo'], 'about');
         if ($uploaded) {
             // Delete old if exists
-            if ($logo && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/about/' . $logo)) {
-                unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/about/' . $logo);
+            if ($logo && file_exists(__DIR__ . '/../uploads/about/' . $logo)) {
+                unlink(__DIR__ . '/../uploads/about/' . $logo);
             }
             $logo = $uploaded;
         }
@@ -55,8 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_FILES['favicon']['name']) && !empty($_FILES['favicon']['name'])) {
         $uploaded = upload_image($_FILES['favicon'], 'about');
         if ($uploaded) {
-            if ($favicon && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/about/' . $favicon)) {
-                unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/about/' . $favicon);
+            if ($favicon && file_exists(__DIR__ . '/../uploads/about/' . $favicon)) {
+                unlink(__DIR__ . '/../uploads/about/' . $favicon);
             }
             $favicon = $uploaded;
         }
@@ -169,7 +169,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <label class="block text-sm font-medium text-slate-700 mb-2">Main Logo</label>
                     <?php if(!empty($about['logo'])): ?>
                         <div class="mb-3 p-2 bg-slate-100 rounded inline-block">
-                            <img src="/uploads/about/<?php echo $about['logo']; ?>" alt="Logo" class="h-12 object-contain">
+                            <img src="../uploads/about/<?php echo $about['logo']; ?>" alt="Logo" class="h-12 object-contain">
                         </div>
                     <?php endif; ?>
                     <input type="file" name="logo" accept="image/*" class="w-full text-sm">
@@ -179,7 +179,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <label class="block text-sm font-medium text-slate-700 mb-2">Favicon</label>
                     <?php if(!empty($about['favicon'])): ?>
                         <div class="mb-3 p-2 bg-slate-100 rounded inline-block">
-                            <img src="/uploads/about/<?php echo $about['favicon']; ?>" alt="Favicon" class="h-8 object-contain">
+                            <img src="../uploads/about/<?php echo $about['favicon']; ?>" alt="Favicon" class="h-8 object-contain">
                         </div>
                     <?php endif; ?>
                     <input type="file" name="favicon" accept="image/*" class="w-full text-sm">

@@ -16,8 +16,8 @@ require_once __DIR__ . '/components/header.php';
 if (isset($_POST['action']) && $_POST['action'] == 'delete') {
     $id = (int)$_POST['id'];
     $partner = $pdo->query("SELECT logo FROM partners WHERE id=$id")->fetch();
-    if ($partner && $partner['logo'] && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/partners/' . $partner['logo'])) {
-        unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/partners/' . $partner['logo']);
+    if ($partner && $partner['logo'] && file_exists(__DIR__ . '/../uploads/partners/' . $partner['logo'])) {
+        unlink(__DIR__ . '/../uploads/partners/' . $partner['logo']);
     }
     $pdo->prepare("DELETE FROM partners WHERE id = ?")->execute([$id]);
     set_flash_msg('success', 'Partner deleted.');
@@ -43,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
     if ($id) {
         $old = $pdo->query("SELECT logo FROM partners WHERE id=".(int)$id)->fetch();
         if ($logo) {
-            if ($old && $old['logo'] && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/partners/' . $old['logo'])) {
-                unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/partners/' . $old['logo']);
+            if ($old && $old['logo'] && file_exists(__DIR__ . '/../uploads/partners/' . $old['logo'])) {
+                unlink(__DIR__ . '/../uploads/partners/' . $old['logo']);
             }
         } else {
             $logo = $old['logo'] ?? '';
@@ -97,7 +97,7 @@ $partners = $pdo->query("SELECT * FROM partners ORDER BY position ASC")->fetchAl
                     <td class="p-4">
                         <?php if($item['logo']): ?>
                         <div class="w-16 h-10 object-contain overflow-hidden flex items-center">
-                            <img src="/uploads/partners/<?php echo $item['logo']; ?>" class="max-h-full max-w-full">
+                            <img src="../uploads/partners/<?php echo $item['logo']; ?>" class="max-h-full max-w-full">
                         </div>
                         <?php else: ?>
                         <span class="text-slate-400 text-xs">No Logo</span>
