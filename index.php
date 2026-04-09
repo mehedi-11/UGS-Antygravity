@@ -3,7 +3,7 @@
 require_once __DIR__ . '/components/header.php';
 
 // Fetch dynamic data
-$hero_slides = $pdo->query("SELECT * FROM hero ORDER BY position ASC LIMIT 3")->fetchAll();
+$hero_slide = $pdo->query("SELECT * FROM hero ORDER BY position ASC LIMIT 1")->fetch();
 $services = $pdo->query("SELECT * FROM services ORDER BY position ASC LIMIT 6")->fetchAll();
 $blogs = $pdo->query("SELECT b.*, (SELECT COUNT(*) FROM blog_comments c WHERE c.blog_id = b.id) as comment_count FROM blogs b ORDER BY created_at DESC LIMIT 3")->fetchAll();
 $achievements = []; // We will check if table exists below
@@ -33,52 +33,59 @@ try { $db_uni = $pdo->query("SELECT * FROM university ORDER BY position ASC LIMI
 ?>
 
 <!-- HERO SECTION -->
-<!-- Using Swiper for multiple slides. If 0 slides, show a fallback -->
-<section class="relative bg-dark pt-0 lg:pt-0">
-    <div class="swiper heroSwiper h-[500px] sm:h-[600px] lg:h-[700px] relative overflow-hidden">
-        <div class="swiper-wrapper">
-            <?php if(!empty($hero_slides)): ?>
-                <?php foreach($hero_slides as $slide): ?>
-                    <div class="swiper-slide relative flex items-center bg-cover bg-center" style="background-image: url('uploads/hero/<?php echo htmlspecialchars($slide['image']); ?>');">
-                        <div class="absolute inset-0 bg-dark/70 lg:bg-gradient-to-r from-dark/90 to-dark/40"></div>
-                        
-                        <!-- Floating Blob Decoration -->
-                        <div class="absolute top-1/4 right-1/4 w-64 h-64 bg-secondary rounded-full filter blur-[100px] opacity-20 hero-blob"></div>
+<section class="relative bg-white pt-24 pb-20 lg:pt-32 lg:pb-28 overflow-hidden">
+    <!-- Smooth background blobs -->
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary rounded-full filter blur-[120px] opacity-70 translate-x-1/3 -translate-y-1/3"></div>
+    <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-orange-50 rounded-full filter blur-[150px] opacity-60 -translate-x-1/4 translate-y-1/4"></div>
 
-                        <div class="container mx-auto px-4 relative z-10 pt-16">
-                            <div class="max-w-2xl text-white">
-                                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight mb-6 animate-on-scroll">
-                                    <?php echo htmlspecialchars($slide['title']); ?>
-                                </h1>
-                                <p class="text-lg sm:text-xl text-slate-300 mb-8 font-light animate-on-scroll delay-100">
-                                    <?php echo htmlspecialchars($slide['subtitle']); ?>
-                                </p>
-                                
-                                <?php if($slide['button_text']): ?>
-                                <div class="flex flex-wrap gap-4 animate-on-scroll delay-200">
-                                    <a href="<?php echo htmlspecialchars($slide['button_link'] ?: 'contact.php'); ?>" class="bg-secondary hover:bg-accent px-8 py-4 rounded-full font-bold text-white transition transform hover:-translate-y-1 shadow-lg shadow-secondary/30 flex items-center gap-2">
-                                        <?php echo htmlspecialchars($slide['button_text']); ?> <i class="ph ph-arrow-right"></i>
-                                    </a>
-                                </div>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <!-- Fallback Slide -->
-                <div class="swiper-slide relative flex items-center bg-dark">
-                    <div class="container mx-auto px-4 relative z-10 pt-16">
-                        <div class="max-w-2xl text-white">
-                            <h1 class="text-5xl lg:text-7xl font-extrabold leading-tight mb-6 hidden">Empower Your <span class="text-gradient">Future</span></h1>
-                            <p class="text-xl text-slate-300 mb-8 font-light">Set up your hero slides in the admin panel.</p>
-                        </div>
-                    </div>
+    <div class="container mx-auto px-4 relative z-10 text-center mt-8">
+        <div class="max-w-4xl mx-auto">
+            <?php if($hero_slide): ?>
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight text-slate-800 mb-6 animate-on-scroll">
+                    <?php echo htmlspecialchars($hero_slide['title']); ?>
+                </h1>
+                <p class="text-lg sm:text-xl text-slate-500 mb-10 font-light max-w-2xl mx-auto leading-relaxed animate-on-scroll delay-100">
+                    <?php echo htmlspecialchars($hero_slide['subtitle']); ?>
+                </p>
+                
+                <div class="flex flex-wrap justify-center gap-4 animate-on-scroll delay-200">
+                    <?php if($hero_slide['button_text']): ?>
+                    <a href="<?php echo htmlspecialchars($hero_slide['button_link'] ?: 'contact.php'); ?>" class="bg-secondary hover:bg-accent px-8 py-3.5 rounded-full font-bold text-white transition transform hover:-translate-y-1 flex items-center gap-2 shadow-lg shadow-secondary/30">
+                        <?php echo htmlspecialchars($hero_slide['button_text']); ?> <i class="ph ph-arrow-right"></i>
+                    </a>
+                    <?php endif; ?>
+                    
+                    <?php if(!empty($hero_slide['button2_text'])): ?>
+                    <a href="<?php echo htmlspecialchars($hero_slide['button2_link'] ?: '#'); ?>" class="bg-white border border-slate-200 hover:border-secondary hover:text-secondary text-slate-600 px-8 py-3.5 rounded-full font-bold transition transform hover:-translate-y-1 flex items-center gap-2 shadow-sm">
+                        <?php echo htmlspecialchars($hero_slide['button2_text']); ?> <i class="ph ph-arrow-right"></i>
+                    </a>
+                    <?php endif; ?>
                 </div>
+            <?php else: ?>
+                <h1 class="text-5xl lg:text-7xl font-extrabold leading-tight text-slate-800 mb-6">Empower Your <span class="text-secondary">Future</span></h1>
+                <p class="text-xl text-slate-500 mb-8 font-light">Set up your hero slides in the admin panel.</p>
             <?php endif; ?>
         </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
+        
+        <!-- ABOUT COUNTERS STATISTICS IN HERO -->
+        <div class="mt-20 pt-10 max-w-5xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="animate-on-scroll delay-200">
+                <div class="text-3xl lg:text-4xl font-extrabold text-secondary mb-1 counter" data-target="<?php echo (int)($about['country'] ?? 0); ?>">0</div>
+                <div class="text-sm font-bold text-slate-400 tracking-wider">COUNTRIES</div>
+            </div>
+            <div class="animate-on-scroll delay-300">
+                <div class="text-3xl lg:text-4xl font-extrabold text-secondary mb-1 counter" data-target="<?php echo (int)($about['university'] ?? 0); ?>">0</div>
+                <div class="text-sm font-bold text-slate-400 tracking-wider">UNIVERSITIES</div>
+            </div>
+            <div class="animate-on-scroll delay-400">
+                <div class="text-3xl lg:text-4xl font-extrabold text-secondary mb-1 counter" data-target="<?php echo (int)($about['student'] ?? 0); ?>">0</div>
+                <div class="text-sm font-bold text-slate-400 tracking-wider">STUDENTS GUIDED</div>
+            </div>
+            <div class="animate-on-scroll delay-500">
+                <div class="text-3xl lg:text-4xl font-extrabold text-secondary mb-1 counter" data-target="<?php echo (int)($about['happy_smile'] ?? 0); ?>">0</div>
+                <div class="text-sm font-bold text-slate-400 tracking-wider">HAPPY SMILES</div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -125,29 +132,7 @@ try { $db_uni = $pdo->query("SELECT * FROM university ORDER BY position ASC LIMI
     </div>
 </section>
 
-<!-- ACHIEVEMENTS COUNTERS -->
-<?php if(!empty($achievements)): ?>
-<section class="py-16 bg-dark text-white relative overflow-hidden">
-    <!-- Overlay/Pattern -->
-    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#f97316 1px, transparent 1px); background-size: 24px 24px;"></div>
-    
-    <div class="container mx-auto px-4 relative z-10">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <?php foreach($achievements as $ach): ?>
-                <div class="animate-on-scroll">
-                    <div class="text-4xl md:text-5xl font-bold text-secondary mb-2 counter" data-target="100">
-                        <!-- Ideally, achievement title would be numbers, e.g., "15+", but for now we'll just display title -->
-                        <?php echo htmlspecialchars($ach['title'] ?? $ach['name'] ?? '10+'); ?>
-                    </div>
-                    <div class="text-sm font-medium text-slate-300 uppercase tracking-wider">
-                        <?php echo htmlspecialchars($ach['details'] ?? 'Years Experience'); ?>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section>
-<?php endif; ?>
+
 
 <!-- WORKING PROCESS -->
 <?php if(!empty($working_process)): ?>
@@ -214,30 +199,30 @@ try { $db_uni = $pdo->query("SELECT * FROM university ORDER BY position ASC LIMI
 <?php endif; ?>
 
 <!-- QUICK ABOUT SECTION -->
-<section class="py-20 bg-white">
+<section class="py-20 bg-slate-50">
     <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-16">
         <div class="lg:w-1/2 relative animate-on-scroll">
-            <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+            <div class="relative z-10 rounded-3xl overflow-hidden shadow-lg border border-slate-100">
                 <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop" alt="Students studying" class="w-full h-[500px] object-cover">
             </div>
             <!-- Decorative Dots -->
-            <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary opacity-20 rounded-full blur-2xl"></div>
-            <div class="absolute -top-6 -right-6 w-32 h-32 bg-secondary opacity-20 rounded-full blur-2xl"></div>
+            <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary opacity-10 rounded-full blur-2xl"></div>
+            <div class="absolute -top-6 -right-6 w-32 h-32 bg-secondary opacity-10 rounded-full blur-2xl"></div>
         </div>
         
         <div class="lg:w-1/2 animate-on-scroll">
             <h4 class="text-secondary font-bold tracking-wider uppercase text-sm mb-2">About Us</h4>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark mb-6 leading-tight">Your Trusted Guide to <br><span class="text-secondary">International Education</span></h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-6 leading-tight">Your Trusted Guide to <br><span class="text-secondary">International Education</span></h2>
             <p class="text-slate-500 mb-6 leading-relaxed">
                 At Unilink Global Solution, we believe that education knows no borders. We are dedicated to helping ambitious students find the perfect university matching their academic background and future career goals.
             </p>
             <ul class="space-y-4 mb-8">
-                <li class="flex items-center gap-3 text-dark font-medium"><i class="ph-fill ph-check-circle text-secondary text-xl"></i> Authorized representation of top universities.</li>
-                <li class="flex items-center gap-3 text-dark font-medium"><i class="ph-fill ph-check-circle text-secondary text-xl"></i> Transparent and ethical counseling.</li>
-                <li class="flex items-center gap-3 text-dark font-medium"><i class="ph-fill ph-check-circle text-secondary text-xl"></i> High visa success rate.</li>
-                <li class="flex items-center gap-3 text-dark font-medium"><i class="ph-fill ph-check-circle text-secondary text-xl"></i> End-to-end guidance from admission to landing.</li>
+                <li class="flex items-center gap-3 text-slate-700 font-medium"><i class="ph-fill ph-check-circle text-secondary text-xl"></i> Authorized representation of top universities.</li>
+                <li class="flex items-center gap-3 text-slate-700 font-medium"><i class="ph-fill ph-check-circle text-secondary text-xl"></i> Transparent and ethical counseling.</li>
+                <li class="flex items-center gap-3 text-slate-700 font-medium"><i class="ph-fill ph-check-circle text-secondary text-xl"></i> High visa success rate.</li>
+                <li class="flex items-center gap-3 text-slate-700 font-medium"><i class="ph-fill ph-check-circle text-secondary text-xl"></i> End-to-end guidance from admission to landing.</li>
             </ul>
-            <a href="about.php" class="bg-secondary hover:bg-accent text-white px-8 py-3.5 rounded-full font-bold shadow-md hover:shadow-lg transition flex items-center gap-2 inline-flex">
+            <a href="about.php" class="bg-white border text-center border-slate-200 text-slate-600 hover:border-secondary hover:text-secondary px-8 py-3.5 rounded-full font-bold shadow-sm transition flex items-center gap-2 inline-flex">
                 More About Us <i class="ph ph-arrow-right font-bold"></i>
             </a>
         </div>
@@ -411,19 +396,6 @@ try { $db_uni = $pdo->query("SELECT * FROM university ORDER BY position ASC LIMI
 <!-- Initialize Swiper -->
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-        // Hero Swiper
-        new Swiper(".heroSwiper", {
-            loop: true,
-            effect: "fade",
-            autoplay: {
-                delay: 6000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-        });
 
         // Testimonial Swiper
         new Swiper(".testimonialSwiper", {

@@ -10,17 +10,17 @@ try {
 ?>
 
 <!-- Page Header -->
-<section class="relative bg-dark py-24 lg:py-32 overflow-hidden">
-    <div class="absolute inset-0 opacity-30" style="background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5ce?q=80&w=1600&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/80 to-transparent"></div>
+<section class="relative bg-slate-50 py-24 lg:py-32 overflow-hidden border-b border-slate-100">
+    <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-multiply"></div>
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary rounded-full filter blur-[150px] opacity-20 translate-x-1/3 -translate-y-1/3"></div>
     
     <div class="container mx-auto px-4 relative z-10 text-center">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 animate-on-scroll">Global Destinations</h1>
-        <p class="text-lg text-slate-300 max-w-2xl mx-auto mb-6 animate-on-scroll delay-100">Explore the world's most vibrant, high-quality, and sought-after education hubs.</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-800 mb-4 animate-on-scroll">Global Destinations</h1>
+        <p class="text-lg text-slate-500 max-w-2xl mx-auto mb-6 animate-on-scroll delay-100">Explore the world's most vibrant, high-quality, and sought-after education hubs.</p>
         <div class="flex items-center justify-center gap-2 text-slate-400 text-sm font-medium animate-on-scroll delay-200">
-            <a href="index.php" class="hover:text-secondary transition">Home</a>
+            <a href="index.php" class="hover:text-secondary transition text-slate-500 font-bold">Home</a>
             <i class="ph ph-caret-right"></i>
-            <span class="text-secondary">Destinations</span>
+            <span class="text-secondary font-bold">Destinations</span>
         </div>
     </div>
 </section>
@@ -32,7 +32,7 @@ try {
         <?php if(!empty($countries)): ?>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php foreach($countries as $index => $country): ?>
-                    <a href="universities.php?country=<?php echo urlencode($country['country_name']); ?>" class="block group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-500 h-[400px] animate-on-scroll" style="animation-delay: <?php echo ($index * 100); ?>ms;">
+                    <a href="country-view.php?id=<?php echo urlencode($country['id']); ?>" class="block group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500 h-[400px] animate-on-scroll" style="animation-delay: <?php echo ($index * 100); ?>ms;">
                         <?php if($country['country_image']): ?>
                             <img src="uploads/countries/<?php echo htmlspecialchars($country['country_image']); ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-in-out">
                         <?php else: ?>

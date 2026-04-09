@@ -19,61 +19,85 @@ if ($id > 0) {
         redirect('events.php');
     }
     ?>
-    <!-- Page Header -->
-    <section class="relative bg-dark py-24 overflow-hidden">
-        <div class="absolute inset-0 opacity-30" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1600&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-dark to-dark/40"></div>
-        <div class="container mx-auto px-4 relative z-10 text-center mt-12">
-            <span class="inline-block bg-secondary text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4">Event Details</span>
-            <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight max-w-4xl mx-auto"><?php echo htmlspecialchars($event['title']); ?></h1>
+    <!-- Event Hero Header -->
+    <section class="relative bg-slate-50 pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden border-b border-slate-100">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-multiply"></div>
+        <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-primary rounded-full filter blur-[150px] opacity-50 translate-x-1/3 -translate-y-1/3"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                
+                <div class="lg:w-2/3">
+                    <div class="flex items-center gap-2 text-slate-400 text-sm font-bold uppercase tracking-widest mb-6 animate-on-scroll">
+                        <a href="index.php" class="hover:text-secondary transition text-slate-500">Home</a>
+                        <i class="ph ph-caret-right"></i>
+                        <a href="events.php" class="hover:text-secondary transition text-slate-500">Events</a>
+                        <i class="ph ph-caret-right"></i>
+                        <span class="text-secondary">Event Details</span>
+                    </div>
+                    
+                    <h1 class="text-3xl md:text-5xl font-extrabold text-slate-800 mb-6 leading-tight max-w-4xl tracking-tight animate-on-scroll delay-100">
+                        <?php echo htmlspecialchars($event['title']); ?>
+                    </h1>
+                    
+                    <div class="flex flex-col sm:flex-row gap-6 mb-8 text-slate-600 animate-on-scroll delay-200">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full bg-white shadow-sm text-secondary border border-slate-100 flex items-center justify-center text-xl"><i class="ph ph-clock"></i></div>
+                            <div>
+                                <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">Time</p>
+                                <p class="font-bold text-slate-700"><?php echo date('h:i A - l', strtotime($event['date_time'])); ?></p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full bg-white shadow-sm text-secondary border border-slate-100 flex items-center justify-center text-xl"><i class="ph ph-map-pin"></i></div>
+                            <div>
+                                <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">Location</p>
+                                <p class="font-bold text-slate-700"><?php echo htmlspecialchars($event['location'] ?? 'Virtual / Online'); ?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/3 w-full animate-on-scroll delay-200">
+                    <div class="relative rounded-[2rem] overflow-hidden shadow-xl border-4 border-white aspect-[4/3] group text-center bg-white flex items-center justify-center">
+                        <div class="p-8">
+                            <span class="block text-6xl font-black text-secondary mb-2"><?php echo date('d', strtotime($event['date_time'])); ?></span>
+                            <span class="block text-xl uppercase tracking-widest text-slate-500 font-bold"><?php echo date('F Y', strtotime($event['date_time'])); ?></span>
+                        </div>
+                        <div class="absolute inset-0 bg-secondary/5 mix-blend-multiply transition duration-500 group-hover:bg-transparent"></div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
-    <section class="py-20 bg-slate-50 min-h-[60vh]">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <div class="bg-white rounded-3xl p-6 sm:p-12 shadow-sm border border-slate-100 relative overflow-hidden">
-                <!-- Date Badge -->
-                <div class="absolute top-0 right-10 bg-secondary text-white text-center py-3 px-6 rounded-b-2xl shadow-lg">
-                    <span class="block text-3xl font-bold"><?php echo date('d', strtotime($event['date_time'])); ?></span>
-                    <span class="block text-sm uppercase tracking-widest"><?php echo date('M', strtotime($event['date_time'])); ?></span>
-                </div>
-                
-                <?php if($event['event_image']): ?>
-                    <img src="uploads/events/<?php echo htmlspecialchars($event['event_image']); ?>" class="w-full h-80 object-cover rounded-2xl mb-10 shadow-sm mt-8">
-                <?php endif; ?>
-                
-                <div class="flex flex-col sm:flex-row gap-6 mb-10 pb-8 border-b border-slate-100 text-slate-600">
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xl"><i class="ph ph-clock"></i></div>
-                        <div>
-                            <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">Time</p>
-                            <p class="font-semibold"><?php echo date('h:i A - l', strtotime($event['date_time'])); ?></p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-secondary/10 text-secondary flex items-center justify-center text-xl"><i class="ph ph-map-pin"></i></div>
-                        <div>
-                            <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">Location</p>
-                            <p class="font-semibold"><?php echo htmlspecialchars($event['location'] ?? 'Virtual / Online'); ?></p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="prose prose-lg max-w-none text-slate-600 leading-relaxed mb-12">
-                    <?php echo nl2br(htmlspecialchars($event['details'])); ?>
-                </div>
-                
-                <div class="bg-dark text-white rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-secondary rounded-full filter blur-[50px] opacity-20"></div>
-                    <div>
-                        <h3 class="text-2xl font-bold mb-2">Book Your Spot Now</h3>
-                        <p class="text-slate-400 text-sm">Don't miss this opportunity to connect with our experts.</p>
-                    </div>
-                    <a href="appointment.php" class="bg-secondary hover:bg-accent px-8 py-3 rounded-full font-bold transition flex-shrink-0 relative z-10 flex items-center gap-2">Register <i class="ph ph-arrow-right"></i></a>
-                </div>
+    <!-- Details Section -->
+    <section class="py-20 bg-white min-h-[50vh]">
+        <div class="container mx-auto px-4 max-w-4xl border-slate-100 border bg-slate-50 rounded-3xl p-8 sm:p-12 shadow-sm animate-on-scroll">
+            
+            <?php if($event['event_image']): ?>
+                <img src="uploads/events/<?php echo htmlspecialchars($event['event_image']); ?>" class="w-full h-80 object-cover rounded-2xl mb-10 shadow-sm border border-slate-100/50 hover:shadow-md transition">
+            <?php endif; ?>
+            
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 border-b border-slate-200 pb-4">Event Description</h2>
+
+            <div class="prose prose-lg prose-slate max-w-none text-slate-600 leading-relaxed mb-12">
+                <?php echo nl2br(htmlspecialchars($event['details'])); ?>
             </div>
-            <div class="text-center mt-10">
-                <a href="events.php" class="inline-flex items-center gap-2 text-slate-500 hover:text-dark font-bold transition"><i class="ph ph-arrow-left"></i> Back to all events</a>
+            
+            <div class="bg-white border text-center lg:text-left border-slate-100 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm overflow-hidden mt-8">
+                <div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Book Your Spot Now</h3>
+                    <p class="text-slate-500 text-sm">Don't miss this opportunity to connect with our experts.</p>
+                </div>
+                <a href="appointment.php" class="bg-secondary hover:bg-accent px-8 py-3.5 rounded-full font-bold transition flex-shrink-0 flex items-center gap-2 text-white shadow-md shadow-secondary/30">
+                    Register <i class="ph ph-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="text-center mt-12 border-t border-slate-200 pt-8">
+                <a href="events.php" class="inline-flex items-center gap-2 text-slate-500 hover:text-secondary font-bold transition"><i class="ph ph-arrow-left"></i> Back to all events</a>
             </div>
         </div>
     </section>

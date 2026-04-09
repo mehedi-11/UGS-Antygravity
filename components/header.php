@@ -104,6 +104,22 @@ $site_whatsapp = !empty($about['whatsapp']) ? preg_replace('/[^0-9]/', '', $abou
                 <a href="services.php" class="hover:text-secondary transition">Services</a>
                 <a href="destinations.php" class="hover:text-secondary transition">Destinations</a>
                 <a href="blog.php" class="hover:text-secondary transition">Blog</a>
+                <!-- Pages Dropdown -->
+                <div class="relative group">
+                    <button class="flex items-center gap-1 hover:text-secondary transition outline-none py-2">
+                        Pages <i class="ph ph-caret-down text-sm transition-transform duration-300 group-hover:rotate-180"></i>
+                    </button>
+                    <!-- Dropdown Menu -->
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-48 bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 flex flex-col py-2 z-50">
+                        <a href="universities.php" class="px-4 py-2 text-sm text-slate-600 hover:text-secondary hover:bg-slate-50 transition">Universities</a>
+                        <a href="events.php" class="px-4 py-2 text-sm text-slate-600 hover:text-secondary hover:bg-slate-50 transition">Events</a>
+                        <a href="gallery.php" class="px-4 py-2 text-sm text-slate-600 hover:text-secondary hover:bg-slate-50 transition">Gallery</a>
+                        <a href="team.php" class="px-4 py-2 text-sm text-slate-600 hover:text-secondary hover:bg-slate-50 transition">Our Team</a>
+                        <a href="testimonials.php" class="px-4 py-2 text-sm text-slate-600 hover:text-secondary hover:bg-slate-50 transition">Testimonials</a>
+                        <a href="partners.php" class="px-4 py-2 text-sm text-slate-600 hover:text-secondary hover:bg-slate-50 transition">Partners</a>
+                        <a href="contact.php" class="px-4 py-2 text-sm text-slate-600 hover:text-secondary hover:bg-slate-50 transition">Contact Us</a>
+                    </div>
+                </div>
             </nav>
 
             <!-- Book Appointment CTA -->
@@ -120,13 +136,28 @@ $site_whatsapp = !empty($about['whatsapp']) ? preg_replace('/[^0-9]/', '', $abou
         </div>
 
         <!-- Mobile Nav (Hidden by default) -->
-        <div id="mobile-nav" class="hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-slate-100 flex-col items-center py-4 gap-4 font-medium md:hidden">
+        <div id="mobile-nav" class="hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-slate-100 flex-col items-center py-4 gap-4 font-medium md:hidden max-h-[80vh] overflow-y-auto z-50">
             <a href="index.php" class="text-secondary">Home</a>
             <a href="about.php" class="hover:text-secondary">About</a>
             <a href="services.php" class="hover:text-secondary">Services</a>
             <a href="destinations.php" class="hover:text-secondary">Destinations</a>
             <a href="blog.php" class="hover:text-secondary">Blog</a>
-            <a href="appointment.php" class="bg-secondary text-white px-6 py-2 rounded-full font-semibold mt-2">Book Now</a>
+            
+            <!-- Mobile Pages List -->
+            <div class="w-full text-center border-y border-slate-100 py-4 mt-2 mb-2 bg-slate-50">
+                <p class="text-slate-400 text-xs mb-3 uppercase tracking-widest font-bold">More Pages</p>
+                <div class="flex flex-col gap-3">
+                    <a href="universities.php" class="text-sm text-slate-600 hover:text-secondary">Universities</a>
+                    <a href="events.php" class="text-sm text-slate-600 hover:text-secondary">Events</a>
+                    <a href="gallery.php" class="text-sm text-slate-600 hover:text-secondary">Gallery</a>
+                    <a href="team.php" class="text-sm text-slate-600 hover:text-secondary">Our Team</a>
+                    <a href="testimonials.php" class="text-sm text-slate-600 hover:text-secondary">Testimonials</a>
+                    <a href="partners.php" class="text-sm text-slate-600 hover:text-secondary">Partners</a>
+                    <a href="contact.php" class="text-sm text-slate-600 hover:text-secondary">Contact Us</a>
+                </div>
+            </div>
+
+            <a href="appointment.php" class="bg-secondary text-white px-6 py-2.5 rounded-full font-semibold mt-2 shadow-md">Book Now</a>
         </div>
     </header>
 

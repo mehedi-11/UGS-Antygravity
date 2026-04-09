@@ -35,21 +35,29 @@ try {
 ?>
 
 <!-- Page Header -->
-<section class="relative bg-dark py-24 overflow-hidden">
-    <!-- Background Decoration -->
-    <div class="absolute inset-0 opacity-20" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-dark to-dark/50"></div>
-    
+<section class="relative bg-slate-50 pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden border-b border-slate-100">
+    <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-multiply"></div>
+    <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-primary rounded-full filter blur-[150px] opacity-50 translate-x-1/3 -translate-y-1/3"></div>
+
     <div class="container mx-auto px-4 relative z-10">
-        <div class="max-w-4xl mx-auto text-center mt-12">
-            <div class="flex items-center justify-center gap-4 text-secondary text-sm font-bold uppercase tracking-widest mb-4">
-                <span><i class="ph ph-calendar-blank"></i> <?php echo date('M d, Y', strtotime($blog['created_at'])); ?></span>
-                <span class="w-1 h-1 bg-white rounded-full"></span>
-                <span><i class="ph ph-user"></i> Admin</span>
+        <div class="max-w-4xl mx-auto text-center mt-8">
+            <div class="flex items-center justify-center gap-2 text-slate-400 text-sm font-bold uppercase tracking-widest mb-6 animate-on-scroll">
+                <a href="index.php" class="hover:text-secondary transition text-slate-500">Home</a>
+                <i class="ph ph-caret-right"></i>
+                <a href="blog.php" class="hover:text-secondary transition text-slate-500">Blog</a>
+                <i class="ph ph-caret-right"></i>
+                <span class="text-secondary tracking-widest">Article</span>
             </div>
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-6 leading-tight animate-on-scroll">
+            
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-800 mb-6 leading-tight max-w-4xl tracking-tight animate-on-scroll delay-100">
                 <?php echo htmlspecialchars($blog['title']); ?>
             </h1>
+            
+            <div class="flex items-center justify-center gap-4 text-slate-500 text-sm font-bold uppercase tracking-widest animate-on-scroll delay-200">
+                <span class="flex items-center gap-1"><i class="ph ph-calendar-blank text-secondary"></i> <?php echo date('M d, Y', strtotime($blog['created_at'])); ?></span>
+                <span class="w-1.5 h-1.5 bg-slate-200 rounded-full"></span>
+                <span class="flex items-center gap-1"><i class="ph ph-user text-secondary"></i> Admin</span>
+            </div>
         </div>
     </div>
 </section>

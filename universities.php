@@ -24,20 +24,20 @@ $active_country = $_GET['country'] ?? 'All';
 ?>
 
 <!-- Page Header -->
-<section class="relative bg-dark py-24 lg:py-32 overflow-hidden">
+<section class="relative bg-slate-50 py-24 lg:py-32 overflow-hidden border-b border-slate-100">
     <!-- Background Decoration -->
-    <div class="absolute inset-0 opacity-20" style="background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1600&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-dark to-dark/80"></div>
-    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-secondary rounded-full filter blur-[150px] opacity-30"></div>
+    <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-multiply"></div>
+    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-primary rounded-full filter blur-[150px] opacity-70"></div>
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary rounded-full filter blur-[150px] opacity-20 translate-x-1/3 -translate-y-1/3"></div>
     
     <div class="container mx-auto px-4 relative z-10 text-center">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 animate-on-scroll">World-Class Universities</h1>
-        <div class="flex items-center justify-center gap-2 text-slate-300 text-sm font-medium animate-on-scroll delay-100">
-            <a href="index.php" class="hover:text-secondary transition">Home</a>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-800 mb-4 animate-on-scroll">World-Class Universities</h1>
+        <div class="flex items-center justify-center gap-2 text-slate-400 text-sm font-medium animate-on-scroll delay-100 mt-4">
+            <a href="index.php" class="hover:text-secondary transition text-slate-500 font-bold">Home</a>
             <i class="ph ph-caret-right"></i>
-            <a href="destinations.php" class="hover:text-secondary transition">Destinations</a>
+            <a href="destinations.php" class="hover:text-secondary transition text-slate-500 font-bold">Destinations</a>
             <i class="ph ph-caret-right"></i>
-            <span class="text-secondary">Universities</span>
+            <span class="text-secondary font-bold">Universities</span>
         </div>
     </div>
 </section>
@@ -85,8 +85,8 @@ $active_country = $_GET['country'] ?? 'All';
                             <?php endif; ?>
                         </div>
                         
-                        <h3 class="text-lg font-bold text-dark mb-2 group-hover:text-secondary transition min-h-[3.5rem] flex items-center justify-center leading-snug">
-                            <?php echo htmlspecialchars($uni['university_name']); ?>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-secondary transition min-h-[3.5rem] flex items-center justify-center leading-snug">
+                            <a href="university-view.php?id=<?php echo $uni['id']; ?>"><?php echo htmlspecialchars($uni['university_name']); ?></a>
                         </h3>
                         
                         <p class="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-4 flex items-center justify-center gap-1">
@@ -98,8 +98,8 @@ $active_country = $_GET['country'] ?? 'All';
                         </p>
                         
                         <div class="mt-auto pt-4 border-t border-slate-100">
-                            <a href="contact.php" class="text-secondary font-bold hover:text-accent flex items-center justify-center gap-2 transition">
-                                Apply Now <i class="ph ph-arrow-right"></i>
+                            <a href="university-view.php?id=<?php echo $uni['id']; ?>" class="text-secondary font-bold hover:text-accent flex items-center justify-center gap-2 transition">
+                                University Details <i class="ph ph-arrow-right"></i>
                             </a>
                         </div>
                     </div>
