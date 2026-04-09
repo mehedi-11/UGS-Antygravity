@@ -132,27 +132,56 @@
             </div>
             <button onclick="toggleChatbot()" class="text-slate-300 hover:text-white"><i class="ph ph-x text-lg"></i></button>
         </div>
-        <div class="p-4 bg-slate-50 border-b border-slate-100 max-h-40 overflow-y-auto">
+        <div id="chatbot-chat-container" class="p-4 bg-slate-50 border-b border-slate-100 h-64 overflow-y-auto flex flex-col gap-4">
             <div class="flex gap-3 text-sm">
                 <div class="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center flex-shrink-0 mt-1"><i class="fa-solid fa-robot text-xs"></i></div>
-                <div class="bg-white p-3 rounded-tr-lg rounded-br-lg rounded-bl-lg shadow-sm text-slate-600 border border-slate-100">
-                    Hello! I'm here to guide you. Please leave your details and what you need help with, and our counselors will get back to you immediately!
+                <div class="bg-white p-3 rounded-tr-lg rounded-br-lg rounded-bl-lg shadow-sm text-slate-600 border border-slate-100 chat-msg">
+                    Hello! I'm here to guide you. What can I help you with today?
                 </div>
             </div>
+            <!-- Dynamic steps will appear here -->
         </div>
-        <form action="process_form.php" method="POST" class="p-4 flex flex-col gap-3">
+
+        <form id="chatbot-form" action="process_form.php" method="POST" class="p-4 flex flex-col gap-3 bg-white">
             <input type="hidden" name="form_type" value="chatbot">
-            <select name="topic" required class="w-full px-3 py-2 text-sm border rounded-lg focus:ring-secondary focus:outline-none bg-slate-50">
-                <option value="">Select Topic...</option>
-                <option value="Admission">University Admission</option>
-                <option value="Visa">Visa Processing</option>
-                <option value="Scholarship">Scholarship Query</option>
-                <option value="Other">Other Information</option>
-            </select>
-            <input type="text" name="name" placeholder="Your Name *" required class="w-full px-3 py-2 text-sm border rounded-lg focus:ring-secondary focus:outline-none placeholder:text-slate-400">
-            <input type="text" name="phone" placeholder="Your Phone/WhatsApp *" required class="w-full px-3 py-2 text-sm border rounded-lg focus:ring-secondary focus:outline-none placeholder:text-slate-400">
-            <textarea name="message" placeholder="Your Message..." rows="2" class="w-full px-3 py-2 text-sm border rounded-lg focus:ring-secondary focus:outline-none placeholder:text-slate-400"></textarea>
-            <button type="submit" class="w-full py-2 bg-secondary text-white font-bold rounded-lg shadow hover:bg-accent text-sm mt-1 transition">Send Message</button>
+            
+            <!-- Step 1: Topic -->
+            <div class="chat-step" id="step-1">
+                <select name="topic" id="cb-topic" required class="w-full px-3 py-2 text-sm border rounded-lg focus:ring-secondary focus:outline-none bg-slate-50">
+                    <option value="">Select Topic...</option>
+                    <option value="Admission">University Admission</option>
+                    <option value="Visa">Visa Processing</option>
+                    <option value="Scholarship">Scholarship Query</option>
+                    <option value="Other">Other Information</option>
+                </select>
+            </div>
+
+            <!-- Step 2: Name -->
+            <div class="chat-step hidden" id="step-2">
+                <input type="text" name="name" id="cb-name" placeholder="Your Name *" required class="w-full px-3 py-2 text-sm border rounded-lg focus:ring-secondary focus:outline-none placeholder:text-slate-400">
+            </div>
+
+            <!-- Step 3: Phone -->
+            <div class="chat-step hidden" id="step-3">
+                <input type="text" name="phone" id="cb-phone" placeholder="Your Phone/WhatsApp *" required class="w-full px-3 py-2 text-sm border rounded-lg focus:ring-secondary focus:outline-none placeholder:text-slate-400">
+            </div>
+
+            <!-- Step 4: Message -->
+            <div class="chat-step hidden" id="step-4">
+                <textarea name="message" id="cb-message" placeholder="Your Message..." rows="2" class="w-full px-3 py-2 text-sm border rounded-lg focus:ring-secondary focus:outline-none placeholder:text-slate-400"></textarea>
+            </div>
+
+            <button type="button" id="nextStepBtn" class="w-full py-2 bg-secondary text-white font-bold rounded-lg shadow hover:bg-accent text-sm transition flex items-center justify-center gap-2">
+                Continue <i class="ph ph-arrow-right"></i>
+            </button>
+            
+            <!-- Celebration Check (Hidden) -->
+            <div id="cb-celebration" class="hidden absolute inset-0 bg-white/90 backdrop-blur z-20 flex flex-col items-center justify-center text-secondary">
+                <div class="w-16 h-16 bg-secondary text-white rounded-full flex items-center justify-center text-3xl animate-bounce">
+                    <i class="ph ph-check-bold"></i>
+                </div>
+                <p class="font-bold mt-2">Awesome!</p>
+            </div>
         </form>
     </div>
 
@@ -164,16 +193,95 @@
         // Chatbot Toggle
         function toggleChatbot() {
             const cb = document.getElementById('chatbot-window');
-            if(cb.classList.contains('hidden')) {
-                cb.classList.remove('hidden');
-                cb.classList.add('flex');
-            } else {
-                cb.classList.add('hidden');
-                cb.classList.remove('flex');
-            }
+            cb.classList.toggle('hidden');
+            cb.classList.toggle('flex');
         }
 
         document.addEventListener("DOMContentLoaded", () => {
+            // Sequential Chatbot Logic
+            const form = document.getElementById('chatbot-form');
+            const chatContainer = document.getElementById('chatbot-chat-container');
+            const nextBtn = document.getElementById('nextStepBtn');
+            const celebration = document.getElementById('cb-celebration');
+            let currentStep = 1;
+
+            const questions = [
+                "", // Step 0
+                "Great! Now, could you tell me your name?", // Ask for name after topic
+                "Nice to meet you! What's your Phone or WhatsApp number?", // Ask for phone after name
+                "Almost there! Do you have any specific message or question for us?", // Ask for message after phone
+                "Thank you! We've received your inquiry. Our counselors will contact you soon." // Final
+            ];
+
+            function addMessage(text, isUser = false) {
+                const msgDiv = document.createElement('div');
+                msgDiv.className = `flex gap-3 text-sm ${isUser ? 'justify-end' : ''}`;
+                
+                const html = isUser ? 
+                    `<div class="bg-secondary text-white p-3 rounded-tl-lg rounded-bl-lg rounded-br-lg shadow-sm border border-secondary/20 max-w-[80%]">${text}</div>` :
+                    `<div class="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center flex-shrink-0 mt-1"><i class="fa-solid fa-robot text-xs"></i></div>
+                     <div class="bg-white p-3 rounded-tr-lg rounded-br-lg rounded-bl-lg shadow-sm text-slate-600 border border-slate-100 max-w-[80%]">${text}</div>`;
+                
+                msgDiv.innerHTML = html;
+                chatContainer.appendChild(msgDiv);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+
+            function celebrate(callback) {
+                celebration.classList.remove('hidden');
+                setTimeout(() => {
+                    celebration.classList.add('hidden');
+                    callback();
+                }, 1000);
+            }
+
+            nextBtn.addEventListener('click', () => {
+                const currentInput = document.querySelector(`#step-${currentStep} input, #step-${currentStep} select, #step-${currentStep} textarea`);
+                
+                if(!currentInput.value.trim()) {
+                    currentInput.classList.add('border-red-500');
+                    return;
+                }
+                currentInput.classList.remove('border-red-500');
+
+                // Add user response to chat
+                addMessage(currentInput.value, true);
+
+                if(currentStep < 4) {
+                    celebrate(() => {
+                        // Hide current step, show next
+                        document.getElementById(`step-${currentStep}`).classList.add('hidden');
+                        currentStep++;
+                        document.getElementById(`step-${currentStep}`).classList.remove('hidden');
+                        
+                        // Add next bot question
+                        addMessage(questions[currentStep - 1]);
+                        
+                        // Update button text on last step
+                        if(currentStep === 4) {
+                            nextBtn.innerHTML = 'Submit Inquiry <i class="ph ph-paper-plane-right"></i>';
+                        }
+                    });
+                } else {
+                    // Final Submission via AJAX
+                    const formData = new FormData(form);
+                    nextBtn.disabled = true;
+                    nextBtn.innerHTML = '<i class="ph ph-spinner animate-spin"></i> Submitting...';
+
+                    fetch('process_form.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(r => r.text())
+                    .then(() => {
+                        celebrate(() => {
+                            addMessage(questions[4]);
+                            form.innerHTML = '<div class="p-4 text-center text-green-600 font-bold">Message Sent Successfully!</div>';
+                        });
+                    });
+                }
+            });
+
             // Intersection Observer for scroll animations
             const observerOptions = {
                 root: null,
