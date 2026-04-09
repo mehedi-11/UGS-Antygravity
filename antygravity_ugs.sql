@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2026 at 11:51 AM
+-- Generation Time: Apr 09, 2026 at 12:22 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -195,7 +195,8 @@ CREATE TABLE `chatbot_leads` (
 --
 
 INSERT INTO `chatbot_leads` (`id`, `topic`, `name`, `email`, `phone`, `address`, `country`, `course`, `created_at`) VALUES
-(1, 'Admission', 'Md. Rahim Uddin', 'Not Provided', '01776323859', 'hi', '', '', '2026-04-08 14:59:19');
+(1, 'Admission', 'Md. Rahim Uddin', 'Not Provided', '01776323859', 'hi', '', '', '2026-04-08 14:59:19'),
+(2, 'Admission', 'Test User', 'Not Provided', '1234567890', 'Test message from Jetski.', '', '', '2026-04-09 16:12:02');
 
 -- --------------------------------------------------------
 
@@ -220,7 +221,11 @@ CREATE TABLE `country` (
 --
 
 INSERT INTO `country` (`id`, `country_image`, `banner_image`, `country_name`, `about_country`, `study_opportunity`, `admission_requirements`, `lifestyle_culture`, `position`) VALUES
-(1, '', '', 'Malaysia', '', '', '', '', 1);
+(1, '69d76a2f309dc1775725103.webp', '69d76a2f30e0f1775725103.webp', 'Malaysia', 'Malaysia is an affordable and growing study destination for international students. It offers a high-quality education system with partnerships from UK, Australia, and other global universities. The country is known for its multicultural environment, modern cities, and friendly people. Kuala Lumpur is a popular student city with advanced infrastructure and a comfortable lifestyle. Malaysia provides internationally recognized degrees at lower tuition costs compared to many Western countries. English is widely used in education, making it easier for international students to study and communicate. The country also offers a safe and welcoming environment with a mix of modern and traditional culture. It is an ideal choice for students looking for quality education at a reasonable cost.', 'Malaysia offers a wide range of programs in business, IT, engineering, hospitality, and health sciences. Many universities have international branch campuses, allowing students to earn global degrees at a lower cost. Students can transfer credits and complete part of their studies abroad. The education system focuses on practical learning and industry skills. Some programs include internships to gain real-world experience. Malaysia also provides flexible study options and affordable living expenses. Scholarships and financial support are available for international students. The country’s strong academic partnerships increase global exposure and career opportunities.', 'Students need academic certificates and transcripts from previous studies. English proficiency tests like IELTS or TOEFL are usually required, though some institutions may waive this if prior education was in English. A Statement of Purpose (SOP) and passport copy are needed. Some courses may require additional documents like portfolios. Financial proof is required to show the ability to cover tuition and living expenses. After receiving an offer letter, students must apply for a student visa. Medical check-ups and documentation verification are part of the process. The admission process is generally simple and student-friendly.', 'Malaysia offers a comfortable and affordable lifestyle for students. It is a multicultural country with Malay, Chinese, and Indian influences. Food is diverse, delicious, and budget-friendly. Students can enjoy modern shopping malls, public transport, and entertainment options. The weather is warm throughout the year. People are friendly and welcoming, making it easy to adjust. Students can explore beaches, islands, and cultural landmarks. The lifestyle is relaxed and safe, allowing students to focus on their studies while enjoying their time abroad.', 1),
+(2, '69d76988aed641775724936.webp', '69d76988af57f1775724936.webp', 'Australia', 'Australia is one of the most popular study destinations for international students. It is known for its high-quality education system, modern lifestyle, and multicultural environment. The country has world-ranked universities, advanced research facilities, and globally recognized degrees. Cities like Sydney, Melbourne, and Brisbane offer a safe and student-friendly atmosphere. Australia also provides strong support services for international students, making it easier to adapt to a new environment. The education system focuses on practical learning, critical thinking, and career development. Students can also work part-time during their studies, which helps manage expenses. With beautiful landscapes, beaches, and a welcoming society, Australia offers a balanced academic and personal life experience.', 'Australia offers a wide range of courses including business, engineering, IT, health sciences, and creative arts. Universities provide flexible study options and modern teaching methods. Many programs include internships and industry placements, helping students gain real-world experience. International students can work up to a certain number of hours per week, which supports living costs. After graduation, students may apply for post-study work opportunities depending on their qualification. Scholarships are also available based on merit and academic performance. The country has strong links with global industries, which improves job opportunities after graduation. English is the main language, so students can easily communicate and build global networks.', 'To study in Australia, students must meet academic and English language requirements. A valid academic certificate from previous studies is required. English proficiency tests like IELTS, TOEFL, or PTE are commonly accepted. Students must provide a Statement of Purpose (SOP) explaining their study goals. Some courses may require additional documents like portfolios or work experience. Financial proof is necessary to show the ability to cover tuition and living expenses. A valid passport and health insurance are also required. After receiving an offer letter, students must apply for a student visa and complete biometric and medical checks. Meeting all requirements ensures a smooth admission process.', 'Australia offers a relaxed and friendly lifestyle. People are open, supportive, and culturally diverse. Students can enjoy a balanced life with study, part-time work, and social activities. The country has a strong outdoor culture, including beaches, parks, and sports. Public transport is well developed, making travel easy. Food options are diverse due to the multicultural population. Students feel safe due to low crime rates and strong laws. Festivals, events, and student communities help build connections. The lifestyle promotes independence and personal growth. Overall, Australia provides a welcoming and enjoyable environment for international students.', 2),
+(3, '69d76b1a82eeb1775725338.webp', '69d76b1a830c01775725338.webp', 'New Zealand', 'New Zealand is known for its peaceful environment, high-quality education, and natural beauty. It offers globally recognized degrees and a supportive academic system. Cities like Auckland and Wellington provide a safe and student-friendly atmosphere. The country focuses on research, innovation, and practical learning. New Zealand is less crowded, which creates a calm and focused study environment. It is also known for its welcoming people and strong student support services. The education system encourages critical thinking and independent learning. With mountains, lakes, and green landscapes, students enjoy both academic and personal growth.', 'New Zealand offers programs in engineering, IT, agriculture, business, and environmental studies. Universities provide modern teaching methods and research opportunities. Students can work part-time during studies to support their expenses. Many programs include internships and practical training. After graduation, students may apply for post-study work opportunities. Scholarships are available based on academic performance. The country has strong links with industries, which helps students gain job opportunities. English is the main language, making communication easy for international students.', 'Students must provide academic transcripts and certificates from previous education. English language tests like IELTS or TOEFL are required. A Statement of Purpose (SOP) is needed to explain study goals. Some courses may require additional documents such as portfolios or work experience. Financial proof is required to cover tuition and living costs. A valid passport and health insurance are also necessary. After receiving an offer letter, students must apply for a student visa and complete medical checks. Proper documentation ensures a smooth process.', 'New Zealand offers a relaxed and peaceful lifestyle. People are friendly, respectful, and welcoming. The country has a strong outdoor culture, including hiking, sports, and nature activities. Students enjoy clean cities and a safe environment. Public transport is available, though many people prefer personal travel. The culture values balance between work and life. Students can participate in community events and cultural activities. Overall, New Zealand provides a calm and supportive environment for studying and living.', 3),
+(4, '69d76eca69f3c1775726282.webp', '69d76eca6a4ab1775726282.webp', 'Canada', 'Canada is a top destination for international students due to its high-quality education and welcoming environment. It is known for safety, diversity, and strong academic standards. Universities and colleges offer globally recognized degrees with modern facilities. Cities like Toronto, Vancouver, and Montreal are student-friendly and culturally rich. Canada focuses on research, innovation, and practical learning. The country has a strong economy and provides excellent career opportunities after graduation. Students can work part-time while studying, which helps manage expenses. The natural beauty of Canada, including mountains and lakes, adds to its appeal. It is considered one of the safest countries in the world.', 'Canada offers a wide range of programs in business, engineering, IT, healthcare, and more. Institutions provide co-op programs and internships, allowing students to gain real-world experience. Students can work part-time during studies and full-time during scheduled breaks. After graduation, many students apply for post-graduation work permits. Scholarships and financial aid options are available for international students. Canada’s education system is flexible and focuses on skill development. English and French are widely used, giving students a chance to learn in a bilingual environment. Strong industry connections help students find jobs after completing their studies.', 'Students need academic certificates, transcripts, and English proficiency test results like IELTS or TOEFL. Some institutions may require additional tests or portfolios depending on the course. A Statement of Purpose (SOP) and recommendation letters are often required. Financial proof is necessary to show the ability to cover tuition and living costs. Students must also provide a valid passport and medical documents. After receiving an offer letter, students apply for a study permit. Biometric data and visa processing steps must be completed. Meeting all requirements ensures a smooth admission process.', 'Canada offers a high quality of life with a safe and peaceful environment. It is a multicultural country where people from different backgrounds live together. Students enjoy modern facilities, clean cities, and excellent healthcare services. The lifestyle is balanced, with opportunities for study, work, and leisure. Winter can be cold, but students adapt easily with proper preparation. Public transport is reliable, and cities are well organized. Festivals, cultural events, and student communities help students feel at home. Canada provides a welcoming and supportive environment for international students.', 4),
+(5, '69d76f07164611775726343.webp', '69d76f07166921775726343.webp', 'United State of America', 'The United States is one of the most popular study destinations in the world. It has top-ranked universities, advanced research facilities, and diverse academic programs. The country offers a flexible education system that allows students to choose their subjects and majors. Cities like New York, Los Angeles, and Chicago provide global exposure and career opportunities. The USA is known for innovation, technology, and academic excellence. Students from all over the world come here for higher education. The degrees are globally recognized, and the country offers strong professional growth opportunities.', 'The USA offers a wide range of programs in almost every field, including business, IT, engineering, medicine, and arts. Universities provide modern teaching methods, research opportunities, and internships. Students can work part-time on campus during their studies. Many programs include practical training like OPT (Optional Practical Training). Scholarships and financial aid are available for international students. The education system focuses on creativity, innovation, and skill development. Strong industry connections help students build successful careers after graduation.', 'Students need academic transcripts, certificates, and English proficiency test scores like IELTS or TOEFL. Some universities require standardized tests like SAT, GRE, or GMAT. A Statement of Purpose (SOP) and recommendation letters are essential. Financial proof is required to show the ability to cover expenses. Students must also provide a valid passport. After receiving an offer letter, students apply for a student visa and attend a visa interview. Proper preparation is important for a successful application.', 'The USA offers a diverse and dynamic lifestyle. It is a multicultural country with people from different backgrounds. Students can experience modern cities, entertainment, and global culture. The lifestyle is fast-paced but full of opportunities. Public transport is available in major cities. Students can join clubs, events, and networking programs. Food, culture, and traditions vary across regions. The country encourages independence and personal growth. Overall, students gain valuable life and career experience.', 5);
 
 -- --------------------------------------------------------
 
@@ -275,11 +280,12 @@ CREATE TABLE `gallery` (
 
 CREATE TABLE `hero` (
   `id` int(11) NOT NULL,
-  `image` varchar(255) DEFAULT NULL,
   `title` varchar(255) NOT NULL,
   `subtitle` text DEFAULT NULL,
   `button_text` varchar(50) DEFAULT NULL,
   `button_link` varchar(255) DEFAULT NULL,
+  `button2_text` varchar(255) DEFAULT NULL,
+  `button2_link` varchar(255) DEFAULT NULL,
   `position` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -287,8 +293,12 @@ CREATE TABLE `hero` (
 -- Dumping data for table `hero`
 --
 
-INSERT INTO `hero` (`id`, `image`, `title`, `subtitle`, `button_text`, `button_link`, `position`) VALUES
-(1, '', 'Study in Australia', 'Study in Australia', 'About', '/about', 0);
+INSERT INTO `hero` (`id`, `title`, `subtitle`, `button_text`, `button_link`, `button2_text`, `button2_link`, `position`) VALUES
+(2, 'Start Your Study Abroad Journey Today', 'Get expert guidance for university admission, visa processing, and career planning. We make your dream simple and achievable.', 'Get Free Consultation', 'appointment.php', 'Explore Universities', 'universities.php', 0),
+(3, 'Your Future Begins With the Right Guidance', 'We help students choose the best country, university, and program based on their goals and budget.', 'Book Appointment', 'appointment.php', 'View Services', 'index.php', 1),
+(4, 'Study Abroad Made Easy', 'From application to visa approval, our team supports you at every step with accuracy and care.', 'Apply Now', 'appointment.php', 'Contact Us', 'contact.php', 2),
+(5, 'Turn Your Dream Into Reality', 'Join thousands of successful students who trusted us for their international education journey.', 'Start Your Journey', 'destinations.php', 'Success Stories', 'about.php', 3),
+(6, 'Expert Support for Global Education', 'We provide complete solutions for admission, scholarships, SOP, and visa processing.', 'Get Started', 'contact.php', 'Learn More', 'universities.php', 4);
 
 -- --------------------------------------------------------
 
@@ -322,6 +332,17 @@ CREATE TABLE `services` (
   `position` int(11) DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `services`
+--
+
+INSERT INTO `services` (`id`, `image`, `title`, `icon_class`, `details`, `position`, `created_at`) VALUES
+(6, '', 'University Admission Support', 'fa-solid fa-graduation-cap', 'We help you choose the right university and program. Our team handles your application process with accuracy and care.', 0, '2026-04-09 06:36:40'),
+(7, '', 'Student Visa Processing', 'fa-solid fa-passport', 'Get complete support for visa application, documentation, and interview preparation to increase your success rate.', 1, '2026-04-09 06:37:05'),
+(8, '', 'SOP &amp; Documentation', 'fa-solid fa-file-lines', 'We create professional SOP, LOR, and other documents that meet university requirements and improve acceptance chances.', 2, '2026-04-09 06:37:25'),
+(9, '', 'Scholarship Guidance', 'fa-solid fa-award', 'Find the best scholarship opportunities based on your profile and reduce your study costs significantly.', 3, '2026-04-09 06:37:40'),
+(10, '', 'Career &amp; Course Counseling', 'fa-solid fa-user-graduate', 'Get personalized advice to choose the best course and career path according to your future goals.', 4, '2026-04-09 06:37:55');
 
 -- --------------------------------------------------------
 
@@ -375,6 +396,13 @@ CREATE TABLE `team` (
   `position` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `team`
+--
+
+INSERT INTO `team` (`id`, `profile_image`, `name`, `team_name`, `designation`, `say`, `joining_date`, `blood_group`, `certified_by`, `position`) VALUES
+(1, '69d737be32ddb1775712190.png', 'MD Mehedi Hasan', 'IT', 'Developer', '', '2026-02-01', 'O+', 'Unilink Global Solution', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -424,6 +452,20 @@ CREATE TABLE `working_process` (
   `details` text DEFAULT NULL,
   `position` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `working_process`
+--
+
+INSERT INTO `working_process` (`id`, `title`, `details`, `position`) VALUES
+(1, 'File Assessment', 'We review your academic background and supporting documents to match the best countries and universities for you. Profile evaluation and eligibility check, university and course recommendations, and free consultation and feedback are included.', 1),
+(2, 'Apply for Offer', 'We help you prepare and submit a perfect application for your chosen institutions. This includes application form completion, document verification and submission, and priority handling for quick response.', 2),
+(3, 'GS/GT Clearance', 'Our experts guide you through Genuine Student and Genuine Temporary Entrant assessments with full preparation. We provide mock interviews and review sessions, Statement of Purpose (SOP) guidance, and ensure compliance with visa criteria.', 3),
+(4, 'Visa Application', 'We handle your entire visa process with precision and care for maximum approval chances. This includes visa document preparation, financial and medical guidance, and interview scheduling and support.', 4),
+(5, 'Take Off to University', 'Get ready for your dream journey. We assist you from ticket booking to pre-departure orientation, including flight booking assistance, pre-departure briefing, and travel checklist with safety tips.', 5),
+(6, 'Airport Pickup', 'Our international partners ensure a smooth welcome upon your arrival abroad. This includes on-arrival pickup service, assistance with luggage and transfer, and friendly guidance to your accommodation.', 6),
+(7, 'Accommodation', 'We arrange secure, comfortable, and affordable housing options for you near campus. This includes on-campus and off-campus options, host family or shared apartment setup, and advance booking with rent support.', 7),
+(8, 'Stand for Solving Any Problem', 'Even after your departure, our support never ends. We provide 24/7 student support hotline, emergency assistance and guidance, and continuous follow-up and care.', 8);
 
 --
 -- Indexes for dumped tables
@@ -593,13 +635,13 @@ ALTER TABLE `blog_comments`
 -- AUTO_INCREMENT for table `chatbot_leads`
 --
 ALTER TABLE `chatbot_leads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `country`
 --
 ALTER TABLE `country`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `event`
@@ -623,7 +665,7 @@ ALTER TABLE `gallery`
 -- AUTO_INCREMENT for table `hero`
 --
 ALTER TABLE `hero`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `partners`
@@ -635,7 +677,7 @@ ALTER TABLE `partners`
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `social_media`
@@ -653,7 +695,7 @@ ALTER TABLE `subscriber`
 -- AUTO_INCREMENT for table `team`
 --
 ALTER TABLE `team`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `testimonial`
@@ -671,7 +713,7 @@ ALTER TABLE `university`
 -- AUTO_INCREMENT for table `working_process`
 --
 ALTER TABLE `working_process`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
