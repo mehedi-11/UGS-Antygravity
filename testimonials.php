@@ -51,26 +51,31 @@ try {
             </div>
             
             <?php if(!empty($testimonials)): ?>
-                <div class="space-y-8">
-                    <?php foreach($testimonials as $index => $testi): ?>
-                        <div class="bg-primary/30 p-8 rounded-3xl border border-primary relative animate-on-scroll" style="animation-delay: <?php echo ($index * 100); ?>ms;">
-                            <i class="fa-solid fa-quote-right text-6xl text-white absolute top-6 right-8 opacity-50"></i>
-                            <p class="text-slate-600 text-lg italic mb-6 relative z-10 leading-relaxed">"<?php echo htmlspecialchars($testi['message']); ?>"</p>
-                            <div class="flex items-center gap-4 border-t border-slate-200/50 pt-6">
-                                <?php if($testi['image']): ?>
-                                    <img src="uploads/testimonials/<?php echo htmlspecialchars($testi['image']); ?>" class="w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm">
-                                <?php else: ?>
-                                    <div class="w-14 h-14 rounded-full bg-secondary text-white flex items-center justify-center text-xl font-bold shadow-sm">
-                                        <?php echo substr($testi['name'], 0, 1); ?>
+                <div class="swiper testimonialSwiper pb-12 animate-on-scroll">
+                    <div class="swiper-wrapper">
+                        <?php foreach($testimonials as $index => $testi): ?>
+                            <div class="swiper-slide h-auto">
+                                <div class="bg-primary/10 p-8 rounded-3xl border border-primary/20 relative h-full flex flex-col">
+                                    <i class="fa-solid fa-quote-right text-6xl text-primary/30 absolute top-6 right-8"></i>
+                                    <p class="text-slate-600 text-lg italic mb-6 relative z-10 leading-relaxed flex-grow">"<?php echo htmlspecialchars($testi['message']); ?>"</p>
+                                    <div class="flex items-center gap-4 border-t border-slate-200 pt-6 mt-auto">
+                                        <?php if($testi['image']): ?>
+                                            <img src="uploads/testimonials/<?php echo htmlspecialchars($testi['image']); ?>" class="w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm">
+                                        <?php else: ?>
+                                            <div class="w-14 h-14 rounded-full bg-secondary text-white flex items-center justify-center text-xl font-bold shadow-sm">
+                                                <?php echo substr($testi['name'], 0, 1); ?>
+                                            </div>
+                                        <?php endif; ?>
+                                        <div>
+                                            <h4 class="font-bold text-dark text-lg"><?php echo htmlspecialchars($testi['name']); ?></h4>
+                                            <p class="text-secondary font-semibold text-sm capitalize"><?php echo htmlspecialchars($testi['role']); ?></p>
+                                        </div>
                                     </div>
-                                <?php endif; ?>
-                                <div>
-                                    <h4 class="font-bold text-dark text-lg"><?php echo htmlspecialchars($testi['name']); ?></h4>
-                                    <p class="text-secondary font-semibold text-sm capitalize"><?php echo htmlspecialchars($testi['role']); ?></p>
                                 </div>
                             </div>
-                        </div>
-                    <?php endforeach; ?>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="swiper-pagination"></div>
                 </div>
             <?php else: ?>
                 <div class="text-left text-slate-500 bg-slate-50 p-8 rounded-2xl border border-slate-100">
@@ -129,4 +134,24 @@ try {
     </div>
 </section>
 
+<!-- Initialize Swiper -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        new Swiper(".testimonialSwiper", {
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 30,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    });
+</script>
+
 <?php require_once __DIR__ . '/components/footer.php'; ?>
+

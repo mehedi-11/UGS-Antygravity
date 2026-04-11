@@ -13,7 +13,7 @@ if ($id > 0) {
         $country = $stmt->fetch(PDO::FETCH_ASSOC);
         
         if($country) {
-            $uniStmt = $pdo->prepare("SELECT * FROM university WHERE country_name = ? ORDER BY position ASC");
+            $uniStmt = $pdo->prepare("SELECT * FROM university WHERE country = ? ORDER BY position ASC");
             $uniStmt->execute([$country['country_name']]);
             $universities = $uniStmt->fetchAll(PDO::FETCH_ASSOC);
         }
@@ -50,7 +50,7 @@ if (!$country) {
                 
                 <div class="prose prose-lg prose-slate max-w-none mb-8 animate-on-scroll delay-200">
                     <p class="leading-relaxed text-slate-600">
-                        <?php echo nl2br(htmlspecialchars($country['details'] ?? 'Discover world-class universities and vibrant student life in ' . $country['country_name'] . '.')); ?>
+                        <?php echo nl2br(htmlspecialchars($country['about_country'] ?? 'Discover world-class universities and vibrant student life in ' . $country['country_name'] . '.')); ?>
                     </p>
                 </div>
                 
@@ -82,6 +82,63 @@ if (!$country) {
     </div>
 </section>
 
+<!-- Detailed Information Section -->
+<section class="py-20 bg-white border-b border-slate-100">
+    <div class="container mx-auto px-4 max-w-6xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+            
+            <?php if(!empty($country['about_country'])): ?>
+            <div class="animate-on-scroll">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-secondary text-2xl"><i class="ph ph-info"></i></div>
+                    <h3 class="text-2xl font-bold text-slate-800">About <?php echo htmlspecialchars($country['country_name']); ?></h3>
+                </div>
+                <div class="prose prose-slate max-w-none text-slate-600 leading-relaxed font-light">
+                    <?php echo nl2br(htmlspecialchars($country['about_country'])); ?>
+                </div>
+            </div>
+            <?php endif; ?>
+
+            <?php if(!empty($country['study_opportunity'])): ?>
+            <div class="animate-on-scroll delay-100">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-500 text-2xl"><i class="ph ph-student"></i></div>
+                    <h3 class="text-2xl font-bold text-slate-800">Study Opportunities</h3>
+                </div>
+                <div class="prose prose-slate max-w-none text-slate-600 leading-relaxed font-light">
+                    <?php echo nl2br(htmlspecialchars($country['study_opportunity'])); ?>
+                </div>
+            </div>
+            <?php endif; ?>
+
+            <?php if(!empty($country['admission_requirements'])): ?>
+            <div class="animate-on-scroll mt-4 md:mt-0">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-green-600 text-2xl"><i class="ph ph-file-text"></i></div>
+                    <h3 class="text-2xl font-bold text-slate-800">Admission Requirements</h3>
+                </div>
+                <div class="prose prose-slate max-w-none text-slate-600 leading-relaxed font-light">
+                    <?php echo nl2br(htmlspecialchars($country['admission_requirements'])); ?>
+                </div>
+            </div>
+            <?php endif; ?>
+
+            <?php if(!empty($country['lifestyle_culture'])): ?>
+            <div class="animate-on-scroll delay-100 mt-4 md:mt-0">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-500 text-2xl"><i class="ph ph-globe-hemisphere-east"></i></div>
+                    <h3 class="text-2xl font-bold text-slate-800">Lifestyle & Culture</h3>
+                </div>
+                <div class="prose prose-slate max-w-none text-slate-600 leading-relaxed font-light">
+                    <?php echo nl2br(htmlspecialchars($country['lifestyle_culture'])); ?>
+                </div>
+            </div>
+            <?php endif; ?>
+
+        </div>
+    </div>
+</section>
+
 <!-- Related Universities Section -->
 <section id="universities-section" class="py-24 bg-white min-h-[50vh]">
     <div class="container mx-auto px-4">
@@ -97,8 +154,8 @@ if (!$country) {
                     <a href="university-view.php?id=<?php echo $uni['id']; ?>" class="bg-slate-50 rounded-3xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300 border border-slate-100 group flex flex-col text-center block animate-on-scroll" style="animation-delay: <?php echo ($index * 100); ?>ms;">
                         
                         <div class="h-40 mb-6 flex items-center justify-center bg-white rounded-2xl relative overflow-hidden shadow-sm border border-slate-100 group-hover:border-secondary/20 transition">
-                            <?php if($uni['image']): ?>
-                                <img src="uploads/universities/<?php echo htmlspecialchars($uni['image']); ?>" class="max-w-[70%] max-h-[70%] object-contain group-hover:scale-110 transition duration-500">
+                            <?php if(!empty($uni['university_logo'])): ?>
+                                <img src="uploads/universities/<?php echo htmlspecialchars($uni['university_logo']); ?>" class="max-w-[70%] max-h-[70%] object-contain group-hover:scale-110 transition duration-500">
                             <?php else: ?>
                                 <i class="ph ph-graduation-cap text-6xl text-slate-300"></i>
                             <?php endif; ?>
@@ -109,11 +166,11 @@ if (!$country) {
                         </h3>
                         
                         <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center justify-center gap-1">
-                            <i class="ph ph-map-pin text-secondary"></i> <?php echo htmlspecialchars($uni['country_name']); ?>
+                            <i class="ph ph-map-pin text-secondary"></i> <?php echo htmlspecialchars($uni['country']); ?>
                         </p>
                         
                         <p class="text-slate-500 text-sm leading-relaxed mb-6 flex-grow line-clamp-3">
-                            <?php echo htmlspecialchars($uni['details']); ?>
+                            <?php echo htmlspecialchars($uni['about_university'] ?? ''); ?>
                         </p>
                         
                         <div class="mt-auto pt-4 border-t border-slate-200">

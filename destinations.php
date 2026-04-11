@@ -30,24 +30,29 @@ try {
     <div class="container mx-auto px-4">
         
         <?php if(!empty($countries)): ?>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <?php foreach($countries as $index => $country): ?>
-                    <a href="country-view.php?id=<?php echo urlencode($country['id']); ?>" class="block group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500 h-[400px] animate-on-scroll" style="animation-delay: <?php echo ($index * 100); ?>ms;">
+                    <a href="country-view.php?id=<?php echo urlencode($country['id']); ?>" class="block group relative rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition duration-500 h-[380px] animate-on-scroll" style="animation-delay: <?php echo ($index * 100); ?>ms;">
                         <?php if($country['country_image']): ?>
-                            <img src="uploads/countries/<?php echo htmlspecialchars($country['country_image']); ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-in-out">
+                            <img src="uploads/countries/<?php echo htmlspecialchars($country['country_image']); ?>" class="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-1 transition duration-700 ease-out">
                         <?php else: ?>
-                            <div class="w-full h-full bg-slate-300 flex items-center justify-center text-slate-400 text-6xl"><i class="ph ph-globe"></i></div>
+                            <div class="w-full h-full bg-slate-200 flex flex-col items-center justify-center text-slate-400">
+                                <i class="ph ph-globe-hemisphere-west text-6xl"></i>
+                            </div>
                         <?php endif; ?>
                         
                         <!-- Gradient Overlay -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/40 to-dark/10 group-hover:from-dark transition duration-500"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark/95 via-dark/50 to-transparent opacity-95 transition duration-500"></div>
                         
                         <!-- Content -->
-                        <div class="absolute inset-0 p-8 flex flex-col justify-end">
-                            <h3 class="text-3xl font-bold text-white mb-2 transform group-hover:-translate-y-2 transition duration-300"><?php echo htmlspecialchars($country['country_name']); ?></h3>
-                            <div class="text-slate-300 transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-300">
-                                <p class="text-sm line-clamp-2 mb-4 leading-relaxed"><?php echo htmlspecialchars($country['details'] ?? 'Discover world-class universities and vibrant student life.'); ?></p>
-                                <span class="bg-secondary text-white px-5 py-2 rounded-full text-sm font-semibold inline-flex items-center gap-2">Explore Universities <i class="ph ph-arrow-right"></i></span>
+                        <div class="absolute inset-0 p-6 flex flex-col justify-end">
+                            <div class="transition duration-500 ease-out pb-2">
+                                <h3 class="text-2xl font-bold text-white mb-2"><?php echo htmlspecialchars($country['country_name']); ?></h3>
+                                
+                                <p class="text-slate-300 text-sm line-clamp-2 mb-5 leading-relaxed font-light">Explore world-class universities and vibrant student life in <?php echo htmlspecialchars($country['country_name']); ?>.</p>
+                                <span class="bg-secondary text-white px-5 py-2.5 rounded-full text-xs font-bold inline-flex items-center gap-2 shadow-lg shadow-orange-500/20 w-fit">
+                                    Explore <i class="ph ph-arrow-right font-bold"></i>
+                                </span>
                             </div>
                         </div>
                     </a>

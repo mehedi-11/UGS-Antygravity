@@ -20,49 +20,65 @@ if (!$university) {
 ?>
 
 <!-- University Hero Header -->
-<section class="relative bg-slate-50 pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden border-b border-slate-100">
-    <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-multiply"></div>
-    <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-primary rounded-full filter blur-[150px] opacity-50 translate-x-1/3 -translate-y-1/3"></div>
+<section class="relative bg-dark pt-24 pb-20 lg:pt-32 lg:pb-28 overflow-hidden">
+    <!-- Banner Background Image with Overlay -->
+    <?php if(!empty($university['university_banner'])): ?>
+        <div class="absolute inset-0">
+            <img src="uploads/universities/<?php echo htmlspecialchars($university['university_banner']); ?>" class="w-full h-full object-cover" alt="Banner">
+            <div class="absolute inset-0 bg-slate-900/80 mix-blend-multiply"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/80 to-transparent opacity-90"></div>
+        </div>
+    <?php else: ?>
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-multiply"></div>
+        <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-primary rounded-full filter blur-[150px] opacity-20 translate-x-1/3 -translate-y-1/3"></div>
+    <?php endif; ?>
 
     <div class="container mx-auto px-4 relative z-10">
-        <div class="flex flex-col lg:flex-row gap-12 items-center">
+        <div class="flex flex-col md:flex-row gap-10 items-center justify-between">
             
-            <!-- Logo & Title -->
-            <div class="lg:w-2/3">
-                <div class="flex items-center gap-2 text-slate-400 text-sm font-bold uppercase tracking-widest mb-6 animate-on-scroll">
-                    <a href="index.php" class="hover:text-secondary transition text-slate-500">Home</a>
-                    <i class="ph ph-caret-right"></i>
-                    <a href="universities.php" class="hover:text-secondary transition text-slate-500">Universities</a>
-                    <i class="ph ph-caret-right"></i>
+            <!-- Information -->
+            <div class="md:w-2/3">
+                <div class="flex flex-wrap items-center gap-2 text-slate-300 text-sm font-bold uppercase tracking-widest mb-6 animate-on-scroll">
+                    <a href="index.php" class="hover:text-secondary transition text-slate-400">Home</a>
+                    <i class="ph ph-caret-right text-slate-500"></i>
+                    <a href="universities.php" class="hover:text-secondary transition text-slate-400">Universities</a>
+                    <i class="ph ph-caret-right text-slate-500"></i>
                     <span class="text-secondary"><?php echo htmlspecialchars($university['university_name']); ?></span>
                 </div>
                 
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-800 mb-4 animate-on-scroll delay-100 tracking-tight">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 animate-on-scroll delay-100 tracking-tight leading-tight">
                     <?php echo htmlspecialchars($university['university_name']); ?>
                 </h1>
                 
-                <p class="text-lg font-bold text-secondary uppercase tracking-widest mb-8 flex items-center gap-2 animate-on-scroll delay-200">
-                    <i class="ph ph-map-pin"></i> <?php echo htmlspecialchars($university['country_name']); ?>
-                </p>
+                <div class="flex flex-wrap items-center gap-6 text-sm font-bold uppercase tracking-widest mb-10 animate-on-scroll delay-200">
+                    <span class="flex items-center gap-2 text-primary">
+                        <i class="ph-fill ph-map-pin text-xl"></i> <?php echo htmlspecialchars($university['country'] ?? ''); ?>
+                    </span>
+                    <?php if(!empty($university['location'])): ?>
+                    <span class="flex items-center gap-2 text-slate-300">
+                        <i class="ph-fill ph-navigation-arrow text-xl"></i> <?php echo htmlspecialchars($university['location']); ?>
+                    </span>
+                    <?php endif; ?>
+                </div>
                 
                 <div class="flex flex-wrap gap-4 animate-on-scroll delay-300">
                     <a href="appointment.php" class="bg-secondary hover:bg-accent text-white px-8 py-3.5 rounded-full font-bold shadow-lg shadow-orange-500/30 transition transform hover:-translate-y-1 flex items-center gap-2">
-                        Apply Now <i class="ph ph-arrow-right"></i>
-                    </a>
-                    <a href="contact.php" class="bg-white border border-slate-200 hover:border-secondary hover:text-secondary text-slate-600 px-8 py-3.5 rounded-full font-bold shadow-sm transition transform hover:-translate-y-1 flex items-center gap-2">
-                        Ask a Question <i class="ph ph-question"></i>
+                        Apply Now <i class="ph ph-paper-plane-tilt"></i>
                     </a>
                 </div>
             </div>
-            
-            <!-- Logo Frame -->
-            <div class="lg:w-1/3 w-full animate-on-scroll delay-200 flex justify-center lg:justify-end">
-                <div class="w-64 h-64 bg-white rounded-[2rem] shadow-xl border border-slate-100 flex items-center justify-center p-8 relative group">
-                    <?php if($university['image']): ?>
-                        <img src="uploads/universities/<?php echo htmlspecialchars($university['image']); ?>" class="w-full h-full object-contain group-hover:scale-110 transition duration-500">
-                    <?php else: ?>
-                        <i class="ph ph-graduation-cap text-8xl text-slate-300"></i>
-                    <?php endif; ?>
+
+            <!-- Logo Card -->
+            <div class="md:w-1/3 flex justify-center md:justify-end animate-on-scroll delay-200">
+                <div class="w-56 h-56 md:w-64 md:h-64 bg-white/10 backdrop-blur-md rounded-[2rem] shadow-2xl border border-white/20 flex items-center justify-center p-8 group relative overflow-hidden">
+                    <div class="absolute inset-0 bg-white group-hover:opacity-95 opacity-100 transition duration-500"></div>
+                    <div class="relative z-10 w-full h-full flex items-center justify-center">
+                        <?php if(!empty($university['university_logo'])): ?>
+                            <img src="uploads/universities/<?php echo htmlspecialchars($university['university_logo']); ?>" class="max-w-full max-h-full object-contain group-hover:scale-110 transition duration-500">
+                        <?php else: ?>
+                            <i class="ph ph-graduation-cap text-8xl text-slate-300 group-hover:text-secondary transition"></i>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
             
@@ -71,38 +87,68 @@ if (!$university) {
 </section>
 
 <!-- Details Section -->
-<section class="py-20 bg-white min-h-[50vh]">
-    <div class="container mx-auto px-4 max-w-4xl">
-        <div class="bg-slate-50 rounded-3xl p-8 sm:p-12 shadow-sm border border-slate-100 relative overflow-hidden animate-on-scroll">
+<section class="py-20 bg-slate-50 min-h-[50vh]">
+    <div class="container mx-auto px-4 max-w-6xl">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
             
-            <!-- Quick Facts Banner -->
-            <div class="absolute top-0 right-0 bg-secondary text-white font-bold py-2 px-6 rounded-bl-2xl shadow-sm text-sm uppercase tracking-wider backdrop-blur">
-                Partner Institution
-            </div>
+            <!-- Left Content: About -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-3xl p-8 sm:p-12 shadow-sm border border-slate-100 mb-8 animate-on-scroll">
+                    <div class="flex items-center gap-4 border-b border-slate-100 pb-6 mb-8">
+                        <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-secondary text-2xl"><i class="ph ph-buildings"></i></div>
+                        <h2 class="text-2xl md:text-3xl font-bold text-slate-800">
+                            About University
+                        </h2>
+                    </div>
 
-            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6 border-b border-slate-200 pb-4">
-                About <?php echo htmlspecialchars($university['university_name']); ?>
-            </h2>
-
-            <div class="prose prose-lg prose-slate max-w-none text-slate-600 leading-relaxed mb-10">
-                <?php echo nl2br(htmlspecialchars($university['details'])); ?>
-            </div>
-
-            <!-- Call to action block inside detail -->
-            <div class="bg-white border border-slate-100 rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
-                <div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-2">Interested in applying?</h3>
-                    <p class="text-slate-500 text-sm">Our expert counselors can help you with the admission process and visa applications.</p>
+                    <div class="prose prose-lg prose-slate max-w-none text-slate-600 leading-relaxed font-light">
+                        <?php if(!empty($university['about_university'])): ?>
+                            <?php echo nl2br(htmlspecialchars($university['about_university'])); ?>
+                        <?php else: ?>
+                            <p class="italic text-slate-400">Detailed information about this university is being updated.</p>
+                        <?php endif; ?>
+                    </div>
                 </div>
-                <a href="appointment.php" class="bg-slate-800 hover:bg-slate-900 text-white px-6 py-3 rounded-full font-bold transition flex-shrink-0 flex items-center gap-2">
-                    Consult an Expert <i class="ph ph-chat-circle-dots"></i>
-                </a>
+
+                <?php if(!empty($university['student_facility'])): ?>
+                <div class="bg-white rounded-3xl p-8 sm:p-12 shadow-sm border border-slate-100 mb-8 animate-on-scroll delay-100">
+                    <div class="flex items-center gap-4 border-b border-slate-100 pb-6 mb-8">
+                        <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-secondary text-2xl"><i class="ph-fill ph-star"></i></div>
+                        <h2 class="text-2xl md:text-3xl font-bold text-slate-800">
+                            Student Facilities
+                        </h2>
+                    </div>
+
+                    <div class="prose prose-lg prose-slate max-w-none text-slate-600 leading-relaxed font-light">
+                        <?php echo nl2br(htmlspecialchars($university['student_facility'])); ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+            </div>
+
+            <!-- Right Sidebar: CTA -->
+            <div class="lg:col-span-1 space-y-8 animate-on-scroll delay-200 sticky top-24 h-max">
+
+                <!-- Call to action block -->
+                <div class="bg-dark rounded-3xl p-8 shadow-xl text-center relative overflow-hidden group">
+                    <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-multiply group-hover:opacity-20 transition duration-500"></div>
+                    <div class="relative z-10 text-white">
+                        <i class="ph flex justify-center ph-headset text-5xl text-secondary mb-4 w-full"></i>
+                        <h3 class="text-xl font-bold mb-2">Need Guidance?</h3>
+                        <p class="text-slate-400 text-sm mb-6 leading-relaxed">Our expert counselors can help you with the admission process and visa applications.</p>
+                        <a href="appointment.php" class="bg-secondary hover:bg-accent text-white px-6 py-3 rounded-full font-bold transition w-full block">
+                            Consult an Expert
+                        </a>
+                    </div>
+                </div>
+
             </div>
 
         </div>
         
-        <div class="text-center mt-10">
-            <a href="universities.php" class="inline-flex items-center gap-2 text-slate-500 hover:text-secondary font-bold transition"><i class="ph ph-arrow-left"></i> Back to all Universities</a>
+        <div class="text-center mt-12 animate-on-scroll delay-200">
+            <a href="universities.php" class="inline-flex items-center gap-2 text-slate-500 hover:text-secondary font-bold transition bg-white px-8 py-3 rounded-full border border-slate-200 shadow-sm"><i class="ph ph-arrow-left"></i> Back to all Universities</a>
         </div>
     </div>
 </section>

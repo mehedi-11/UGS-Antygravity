@@ -72,10 +72,34 @@ body {
     100% { transform: translate(0px, 0px) scale(1); }
 }
 
-/* Text Gradients */
 .text-gradient {
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
     background-image: linear-gradient(135deg, #f97316, #ea580c);
+}
+
+/* Infinite Scrolling Marquee */
+.logo-marquee-container {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.logo-marquee-container:hover .logo-marquee-content {
+    animation-play-state: paused;
+}
+
+.logo-marquee-content {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll-marquee 40s linear infinite;
+    gap: 4rem; 
+    padding: 0 2rem;
+}
+
+@keyframes scroll-marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
 }
