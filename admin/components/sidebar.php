@@ -138,6 +138,12 @@
         </a>
         <?php endif; ?>
 
+        <?php if(has_permission('manage_contacts')): ?>
+        <a href="contacts.php" class="flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors <?php echo $current_page == 'contacts.php' ? 'bg-secondary text-white' : 'hover:bg-slate-800 hover:text-white'; ?>">
+            <i class="ph ph-chat-centered-dots text-lg"></i> Contact Messages
+        </a>
+        <?php endif; ?>
+
     </div>
 </aside>
 <style>

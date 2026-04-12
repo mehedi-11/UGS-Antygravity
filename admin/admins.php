@@ -16,11 +16,15 @@ require_once __DIR__ . '/components/header.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['action']) && $_POST['action'] == 'delete') {
         $id = (int)$_POST['id'];
-        if ($id != $_SESSION['admin_id']) { // prevent self-deletion
+        
+        // Check if current user is Super Admin (has 'all' permission)
+        if (!in_array('all', $_SESSION['admin_permissions'])) {
+            set_flash_msg('error', 'Only Super Admins can delete other administrators.');
+        } elseif ($id == $_SESSION['admin_id']) {
+            set_flash_msg('error', 'Cannot delete yourself!');
+        } else {
             $pdo->prepare("DELETE FROM admin WHERE id = ?")->execute([$id]);
             set_flash_msg('success', 'Admin deleted successfully.');
-        } else {
-            set_flash_msg('error', 'Cannot delete yourself!');
         }
     } else {
         $id = $_POST['admin_id'] ?? '';
@@ -78,6 +82,7 @@ $available_permissions = [
     'manage_appointments' => 'Manage Appointments',
     'manage_chatbot' => 'Manage Chatbot',
     'manage_subscribers' => 'Manage Subscribers',
+    'manage_contacts' => 'Manage Contact Messages',
 ];
 ?>
 
@@ -112,7 +117,7 @@ $available_permissions = [
                         <button onclick='editAdmin(<?php echo json_encode($adm); ?>)' class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center hover:bg-blue-200 transition">
                             <i class="ph ph-pencil-simple text-lg"></i>
                         </button>
-                        <?php if($adm['id'] != $_SESSION['admin_id']): ?>
+                        <?php if($adm['id'] != $_SESSION['admin_id'] && in_array('all', $_SESSION['admin_permissions'])): ?>
                         <form action="admins.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this admin?');" class="inline">
                             <input type="hidden" name="action" value="delete">
                             <input type="hidden" name="id" value="<?php echo $adm['id']; ?>">

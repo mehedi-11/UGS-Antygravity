@@ -177,5 +177,5 @@ $gallery = $pdo->query("SELECT * FROM gallery ORDER BY position ASC")->fetchAll(
         modal.classList.remove('hidden');
     }
     function closeModal() { modal.classList.add('hidden'); }
-// </script>
+</script>
 <?php require_once __DIR__ . '/components/footer.php'; ?>

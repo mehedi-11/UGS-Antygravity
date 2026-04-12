@@ -18,7 +18,7 @@ try {
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-800 mb-4 animate-on-scroll">Global Destinations</h1>
         <p class="text-lg text-slate-500 max-w-2xl mx-auto mb-6 animate-on-scroll delay-100">Explore the world's most vibrant, high-quality, and sought-after education hubs.</p>
         <div class="flex items-center justify-center gap-2 text-slate-400 text-sm font-medium animate-on-scroll delay-200">
-            <a href="index.php" class="hover:text-secondary transition text-slate-500 font-bold">Home</a>
+            <a href="index" class="hover:text-secondary transition text-slate-500 font-bold">Home</a>
             <i class="ph ph-caret-right"></i>
             <span class="text-secondary font-bold">Destinations</span>
         </div>
@@ -32,7 +32,7 @@ try {
         <?php if(!empty($countries)): ?>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <?php foreach($countries as $index => $country): ?>
-                    <a href="country-view.php?id=<?php echo urlencode($country['id']); ?>" class="block group relative rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition duration-500 h-[380px] animate-on-scroll" style="animation-delay: <?php echo ($index * 100); ?>ms;">
+                    <a href="country-<?php echo $country['id']; ?>-<?php echo slugify($country['country_name']); ?>" class="block group relative rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition duration-500 h-[380px] animate-on-scroll" style="animation-delay: <?php echo ($index * 100); ?>ms;">
                         <?php if($country['country_image']): ?>
                             <img src="uploads/countries/<?php echo htmlspecialchars($country['country_image']); ?>" class="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-1 transition duration-700 ease-out">
                         <?php else: ?>
@@ -79,7 +79,7 @@ try {
     <div class="container mx-auto px-4 relative z-10">
         <h2 class="text-3xl md:text-5xl font-bold text-dark mb-6">Confused about where to study?</h2>
         <p class="text-slate-600 text-lg max-w-2xl mx-auto mb-10">Our expert counselors can help you choose the best country based on your academic profile, budget, and future career goals.</p>
-        <a href="appointment.php" class="bg-secondary hover:bg-accent text-white px-10 py-4 rounded-full font-bold shadow-xl transition transform hover:-translate-y-1 inline-flex items-center gap-2">
+        <a href="appointment" class="bg-secondary hover:bg-accent text-white px-10 py-4 rounded-full font-bold shadow-xl transition transform hover:-translate-y-1 inline-flex items-center gap-2">
             Talk to an Expert <i class="ph ph-chat-circle-dots"></i>
         </a>
     </div>

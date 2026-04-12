@@ -10,6 +10,18 @@ if (!has_permission('manage_events')) {
     redirect('dashboard.php');
 }
 
+// Ensure table exists
+try {
+    $pdo->exec("CREATE TABLE IF NOT EXISTS event_registrations (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        event_id INT NOT NULL,
+        name VARCHAR(255),
+        email VARCHAR(255),
+        phone VARCHAR(255),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
+} catch (Exception $e) {}
+
 require_once __DIR__ . '/components/header.php';
 
 // Handle Delete
@@ -105,6 +117,14 @@ $events = $pdo->query("SELECT * FROM event ORDER BY position ASC, date_time DESC
                         <div class="text-xs text-slate-400"><i class="ph ph-map-pin"></i> <?php echo htmlspecialchars($item['location']); ?></div>
                     </td>
                     <td class="p-4 text-slate-500"><?php echo date('M d, Y H:i', strtotime($item['date_time'])); ?></td>
+                    <td class="p-4 text-center">
+                        <?php 
+                        $count = $pdo->query("SELECT count(*) FROM event_registrations WHERE event_id = ".$item['id'])->fetchColumn(); 
+                        ?>
+                        <span class="px-2 py-1 bg-slate-100 rounded-full text-[10px] font-bold text-slate-600">
+                            <?php echo $count; ?> Registered
+                        </span>
+                    </td>
                     <td class="p-4 flex gap-2 justify-center">
                         <a href="event_registrations.php?id=<?php echo $item['id']; ?>" class="w-8 h-8 rounded-lg bg-green-100 text-green-600 flex items-center justify-center hover:bg-green-200 transition" title="View Registrations">
                             <i class="ph ph-users text-lg"></i>

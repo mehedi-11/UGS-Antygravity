@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Disallow admin panel for security
+Disallow: /admin/
+Disallow: /config/
+Disallow: /libs/
+Disallow: /tmp/
+
+# Sitemap location
+Sitemap: https://unilinkglobal.com/sitemap.xml

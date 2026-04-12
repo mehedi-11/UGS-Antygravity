@@ -1,0 +1,25 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Allow direct access to files and directories if they physically exist
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirect SEO URLs internally
+RewriteRule ^blog-([0-9]+)-(.*)$ blog-details.php?id=$1 [L,QSA]
+RewriteRule ^university-([0-9]+)-(.*)$ university-view.php?id=$1 [L,QSA]
+RewriteRule ^country-([0-9]+)-(.*)$ country-view.php?id=$1 [L,QSA]
+RewriteRule ^event-([0-9]+)-(.*)$ events.php?id=$1 [L,QSA]
+
+# Hide .php extension
+# 1. Externally redirect /page.php to /page (EXCEPT for actual server requests and POST requests)
+RewriteCond %{REQUEST_METHOD} !POST
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.php [NC]
+RewriteRule ^ %1 [R=301,L]
+
+# 2. Internally map /page back to /page.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*?)/?$ $1.php [NC,L]
+
+</IfModule>

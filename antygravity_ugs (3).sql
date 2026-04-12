@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2026 at 11:49 AM
+-- Generation Time: Apr 12, 2026 at 11:38 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -91,7 +91,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `email`, `phone`, `username`, `password`, `permissions`, `created_at`) VALUES
-(1, 'Mehedi Hasan (Superadmin)', 'mehedimridul1919@gmail.com', '01776323859', 'Mehedi19', '$2y$10$UZk0iPSxAk14hl/Xv01hf.cE/MbitOlMYMznQVr.J65EL187o3zou', '[\"all\"]', '2026-04-08 04:58:35');
+(1, 'Mehedi Hasan (Superadmin)', 'mehedimridul1919@gmail.com', '01776323859', 'Mehedi19', '$2y$10$UZk0iPSxAk14hl/Xv01hf.cE/MbitOlMYMznQVr.J65EL187o3zou', '[\"all\"]', '2026-04-08 04:58:35'),
+(2, 'ali khan', 'ali@gmail.com', '012364891', 'ali1234', '$2y$10$0rwiMjDORDGpKEcPIIaW1.PuuR36wv/tyK/dEMZRX348VWS2z3gLC', '[\"manage_blogs\",\"manage_appointments\"]', '2026-04-12 06:35:23');
 
 -- --------------------------------------------------------
 
@@ -149,7 +150,7 @@ CREATE TABLE `blogs` (
 --
 
 INSERT INTO `blogs` (`id`, `image`, `title`, `content`, `seo_title`, `seo_description`, `likes`, `shares`, `created_at`) VALUES
-(2, '69d5fdfbd1bdc1775631867.png', 'how to get admission in oxfo!rd university from bangladesh', '<h2>Overview of how to get admission in oxford university from bangladesh</h2><p>In today\'s fast-paced world, <strong>how to get admission in oxford university from bangladesh</strong> has become a cornerstone of success. This article explores how it impacts the industry and why it matters to you.</p><ul><li>Reason 1: Innovation and growth</li><li>Reason 2: Academic excellence</li><li>Reason 3: Global opportunities</li></ul><p>By focusing on These key areas, Unilink Global Solution helps you achieve your goals with <em>professionalism</em> and <em>integrity</em>.</p>', 'how to get admission in oxford university from bangladesh', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of &amp;amp;amp;quot;de Finibus Bonorum et Malorum&amp;amp;amp;quot; (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, &amp;amp;amp;quot;Lorem ipsum dolor sit amet..&amp;amp;amp;quot;, comes from a line in section 1.10.32.', 1, 0, '2026-04-08 06:27:33');
+(2, '69d5fdfbd1bdc1775631867.png', 'how to get admission in oxford university from bangladesh', '<p>Getting admission into University of Oxford is a dream for many students in Bangladesh. Known for its world-class education, rich history, and global reputation, Oxford is one of the most competitive universities in the world. However, with proper planning, dedication, and strategy, Bangladeshi students can absolutely achieve this goal.</p><p><br></p><p>The first step is choosing the right course. Oxford offers a wide range of undergraduate and postgraduate programs, but each course has specific requirements. You need to carefully review the course details, required subjects, and academic expectations. For undergraduate programs, Oxford typically requires outstanding academic results. Bangladeshi students usually need top grades in A-Levels or an equivalent qualification such as the International Baccalaureate (IB). If you are studying under the national curriculum (HSC), you may need to complete additional qualifications or foundation programs.</p><p><br></p><p>Next comes the application process. For undergraduate admission, you must apply through the UCAS (Universities and Colleges Admissions Service) platform. The deadline for Oxford is usually earlier than other universities, around mid-October. This means you must prepare your documents well in advance. Your application will include academic transcripts, a personal statement, and a reference letter. The personal statement is extremely important—it should clearly explain your passion for the subject, your achievements, and why you are a strong candidate. Another key requirement is admission tests and interviews. Many Oxford courses require specific entrance exams such as TSA, BMAT, LNAT, or MAT, depending on your subject. Performing well in these tests is crucial. If you pass the initial selection, you will be invited to an interview. The interview is not just about knowledge but also about your critical thinking, problem-solving skills, and ability to discuss ideas.</p><p><br></p><p>English language proficiency is also mandatory. Since the medium of instruction at Oxford is English, you must prove your proficiency through tests like IELTS or TOEFL. Generally, a high IELTS score (around 7.0–7.5 overall) is required, with strong performance in each section. For postgraduate admission, the process is slightly different. You apply directly through Oxford’s official website. Requirements include a strong bachelor’s degree, academic references, a statement of purpose, and sometimes research proposals (for research-based programs). Work experience may also be required for certain courses.</p><p><br></p><p>Financial planning is another major factor. Studying at Oxford can be expensive, including tuition fees and living costs. However, there are many scholarships available for international students, including those from Bangladesh. Scholarships like Rhodes, Clarendon, and other Oxford-specific funding options can significantly reduce financial burden. It is important to research and apply for these opportunities early.</p><p><br></p><p>Lastly, preparation and consistency are key. Start early, maintain excellent academic results, participate in extracurricular activities, and build a strong profile. Activities such as research, competitions, volunteering, and leadership roles can strengthen your application.</p><p>In conclusion, getting admission into the University of Oxford from Bangladesh is challenging but achievable. With clear goals, strong academic performance, proper guidance, and timely preparation, you can turn this dream into reality.</p>', 'how to get admission in oxford university from bangladesh', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of &amp;amp;amp;amp;amp;quot;de Finibus Bonorum et Malorum&amp;amp;amp;amp;amp;quot; (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, &amp;amp;amp;amp;amp;quot;Lorem ipsum dolor sit amet..&amp;amp;amp;amp;amp;quot;, comes from a line in section 1.10.32.', 2, 1, '2026-04-08 06:27:33');
 
 -- --------------------------------------------------------
 
@@ -196,7 +197,34 @@ CREATE TABLE `chatbot_leads` (
 
 INSERT INTO `chatbot_leads` (`id`, `topic`, `name`, `email`, `phone`, `address`, `country`, `course`, `created_at`) VALUES
 (1, 'Admission', 'Md. Rahim Uddin', 'Not Provided', '01776323859', 'hi', '', '', '2026-04-08 14:59:19'),
-(2, 'Admission', 'Test User', 'Not Provided', '1234567890', 'Test message from Jetski.', '', '', '2026-04-09 16:12:02');
+(2, 'Admission', 'Test User', 'Not Provided', '1234567890', 'Test message from Jetski.', '', '', '2026-04-09 16:12:02'),
+(3, 'Admission', 'Md. Rahim Uddin', 'Not Provided', '01776323859', 'I WANT TO STUDY IN ABROAD. SO NEED PROPER GUIDELINE', '', '', '2026-04-12 09:47:27'),
+(4, 'Scholarship', 'MD Rakib Hasan Korim', 'rakib@gmail.com', '017763238596', 'no', 'Canada', 'CSE', '2026-04-12 10:19:35'),
+(5, 'Visa', 'MD Mehedi Hasan', 'mehedihasan19191313@gmail.com', '01776323859', 'NO', 'Garmeny', 'EEE', '2026-04-12 12:29:08');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact_messages`
+--
+
+CREATE TABLE `contact_messages` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `status` enum('unread','read') DEFAULT 'unread',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contact_messages`
+--
+
+INSERT INTO `contact_messages` (`id`, `name`, `email`, `subject`, `message`, `status`, `created_at`) VALUES
+(1, 'MD Mehedi Hasan', 'mehedihasan19191313@gmail.com', 'this is a testing msg', 'this is a testing msg. this is a testing msg. this is a testing msg', 'read', '2026-04-12 06:27:34'),
+(2, 'MD Faisal Habib', 'habib@gmail.com', 'this is a testing msg 2', 'this is a testing msg 2. this is a testing msg 2', 'read', '2026-04-12 08:05:54');
 
 -- --------------------------------------------------------
 
@@ -221,11 +249,11 @@ CREATE TABLE `country` (
 --
 
 INSERT INTO `country` (`id`, `country_image`, `banner_image`, `country_name`, `about_country`, `study_opportunity`, `admission_requirements`, `lifestyle_culture`, `position`) VALUES
-(1, '69d9cd39c12cd1775881529.png', '69d76a2f30e0f1775725103.webp', 'Malaysia', 'Malaysia is an affordable and growing study destination for international students. It offers a high-quality education system with partnerships from UK, Australia, and other global universities. The country is known for its multicultural environment, modern cities, and friendly people. Kuala Lumpur is a popular student city with advanced infrastructure and a comfortable lifestyle. Malaysia provides internationally recognized degrees at lower tuition costs compared to many Western countries. English is widely used in education, making it easier for international students to study and communicate. The country also offers a safe and welcoming environment with a mix of modern and traditional culture. It is an ideal choice for students looking for quality education at a reasonable cost.', 'Malaysia offers a wide range of programs in business, IT, engineering, hospitality, and health sciences. Many universities have international branch campuses, allowing students to earn global degrees at a lower cost. Students can transfer credits and complete part of their studies abroad. The education system focuses on practical learning and industry skills. Some programs include internships to gain real-world experience. Malaysia also provides flexible study options and affordable living expenses. Scholarships and financial support are available for international students. The country’s strong academic partnerships increase global exposure and career opportunities.', 'Students need academic certificates and transcripts from previous studies. English proficiency tests like IELTS or TOEFL are usually required, though some institutions may waive this if prior education was in English. A Statement of Purpose (SOP) and passport copy are needed. Some courses may require additional documents like portfolios. Financial proof is required to show the ability to cover tuition and living expenses. After receiving an offer letter, students must apply for a student visa. Medical check-ups and documentation verification are part of the process. The admission process is generally simple and student-friendly.', 'Malaysia offers a comfortable and affordable lifestyle for students. It is a multicultural country with Malay, Chinese, and Indian influences. Food is diverse, delicious, and budget-friendly. Students can enjoy modern shopping malls, public transport, and entertainment options. The weather is warm throughout the year. People are friendly and welcoming, making it easy to adjust. Students can explore beaches, islands, and cultural landmarks. The lifestyle is relaxed and safe, allowing students to focus on their studies while enjoying their time abroad.', 1),
-(2, '69d76988aed641775724936.webp', '69d76988af57f1775724936.webp', 'Australia', 'Australia is one of the most popular study destinations for international students. It is known for its high-quality education system, modern lifestyle, and multicultural environment. The country has world-ranked universities, advanced research facilities, and globally recognized degrees. Cities like Sydney, Melbourne, and Brisbane offer a safe and student-friendly atmosphere. Australia also provides strong support services for international students, making it easier to adapt to a new environment. The education system focuses on practical learning, critical thinking, and career development. Students can also work part-time during their studies, which helps manage expenses. With beautiful landscapes, beaches, and a welcoming society, Australia offers a balanced academic and personal life experience.', 'Australia offers a wide range of courses including business, engineering, IT, health sciences, and creative arts. Universities provide flexible study options and modern teaching methods. Many programs include internships and industry placements, helping students gain real-world experience. International students can work up to a certain number of hours per week, which supports living costs. After graduation, students may apply for post-study work opportunities depending on their qualification. Scholarships are also available based on merit and academic performance. The country has strong links with global industries, which improves job opportunities after graduation. English is the main language, so students can easily communicate and build global networks.', 'To study in Australia, students must meet academic and English language requirements. A valid academic certificate from previous studies is required. English proficiency tests like IELTS, TOEFL, or PTE are commonly accepted. Students must provide a Statement of Purpose (SOP) explaining their study goals. Some courses may require additional documents like portfolios or work experience. Financial proof is necessary to show the ability to cover tuition and living expenses. A valid passport and health insurance are also required. After receiving an offer letter, students must apply for a student visa and complete biometric and medical checks. Meeting all requirements ensures a smooth admission process.', 'Australia offers a relaxed and friendly lifestyle. People are open, supportive, and culturally diverse. Students can enjoy a balanced life with study, part-time work, and social activities. The country has a strong outdoor culture, including beaches, parks, and sports. Public transport is well developed, making travel easy. Food options are diverse due to the multicultural population. Students feel safe due to low crime rates and strong laws. Festivals, events, and student communities help build connections. The lifestyle promotes independence and personal growth. Overall, Australia provides a welcoming and enjoyable environment for international students.', 0),
-(3, '69d76b1a82eeb1775725338.webp', '69d76b1a830c01775725338.webp', 'New Zealand', 'New Zealand is known for its peaceful environment, high-quality education, and natural beauty. It offers globally recognized degrees and a supportive academic system. Cities like Auckland and Wellington provide a safe and student-friendly atmosphere. The country focuses on research, innovation, and practical learning. New Zealand is less crowded, which creates a calm and focused study environment. It is also known for its welcoming people and strong student support services. The education system encourages critical thinking and independent learning. With mountains, lakes, and green landscapes, students enjoy both academic and personal growth.', 'New Zealand offers programs in engineering, IT, agriculture, business, and environmental studies. Universities provide modern teaching methods and research opportunities. Students can work part-time during studies to support their expenses. Many programs include internships and practical training. After graduation, students may apply for post-study work opportunities. Scholarships are available based on academic performance. The country has strong links with industries, which helps students gain job opportunities. English is the main language, making communication easy for international students.', 'Students must provide academic transcripts and certificates from previous education. English language tests like IELTS or TOEFL are required. A Statement of Purpose (SOP) is needed to explain study goals. Some courses may require additional documents such as portfolios or work experience. Financial proof is required to cover tuition and living costs. A valid passport and health insurance are also necessary. After receiving an offer letter, students must apply for a student visa and complete medical checks. Proper documentation ensures a smooth process.', 'New Zealand offers a relaxed and peaceful lifestyle. People are friendly, respectful, and welcoming. The country has a strong outdoor culture, including hiking, sports, and nature activities. Students enjoy clean cities and a safe environment. Public transport is available, though many people prefer personal travel. The culture values balance between work and life. Students can participate in community events and cultural activities. Overall, New Zealand provides a calm and supportive environment for studying and living.', 2),
+(1, '69d9cd39c12cd1775881529.png', '69d76a2f30e0f1775725103.webp', 'Malaysia', 'Malaysia is an affordable and growing study destination for international students. It offers a high-quality education system with partnerships from UK, Australia, and other global universities. The country is known for its multicultural environment, modern cities, and friendly people. Kuala Lumpur is a popular student city with advanced infrastructure and a comfortable lifestyle. Malaysia provides internationally recognized degrees at lower tuition costs compared to many Western countries. English is widely used in education, making it easier for international students to study and communicate. The country also offers a safe and welcoming environment with a mix of modern and traditional culture. It is an ideal choice for students looking for quality education at a reasonable cost.', 'Malaysia offers a wide range of programs in business, IT, engineering, hospitality, and health sciences. Many universities have international branch campuses, allowing students to earn global degrees at a lower cost. Students can transfer credits and complete part of their studies abroad. The education system focuses on practical learning and industry skills. Some programs include internships to gain real-world experience. Malaysia also provides flexible study options and affordable living expenses. Scholarships and financial support are available for international students. The country’s strong academic partnerships increase global exposure and career opportunities.', 'Students need academic certificates and transcripts from previous studies. English proficiency tests like IELTS or TOEFL are usually required, though some institutions may waive this if prior education was in English. A Statement of Purpose (SOP) and passport copy are needed. Some courses may require additional documents like portfolios. Financial proof is required to show the ability to cover tuition and living expenses. After receiving an offer letter, students must apply for a student visa. Medical check-ups and documentation verification are part of the process. The admission process is generally simple and student-friendly.', 'Malaysia offers a comfortable and affordable lifestyle for students. It is a multicultural country with Malay, Chinese, and Indian influences. Food is diverse, delicious, and budget-friendly. Students can enjoy modern shopping malls, public transport, and entertainment options. The weather is warm throughout the year. People are friendly and welcoming, making it easy to adjust. Students can explore beaches, islands, and cultural landmarks. The lifestyle is relaxed and safe, allowing students to focus on their studies while enjoying their time abroad.', 2),
+(2, '69d76988aed641775724936.webp', '69d76988af57f1775724936.webp', 'Australia', 'Australia is one of the most popular study destinations for international students. It is known for its high-quality education system, modern lifestyle, and multicultural environment. The country has world-ranked universities, advanced research facilities, and globally recognized degrees. Cities like Sydney, Melbourne, and Brisbane offer a safe and student-friendly atmosphere. Australia also provides strong support services for international students, making it easier to adapt to a new environment. The education system focuses on practical learning, critical thinking, and career development. Students can also work part-time during their studies, which helps manage expenses. With beautiful landscapes, beaches, and a welcoming society, Australia offers a balanced academic and personal life experience.', 'Australia offers a wide range of courses including business, engineering, IT, health sciences, and creative arts. Universities provide flexible study options and modern teaching methods. Many programs include internships and industry placements, helping students gain real-world experience. International students can work up to a certain number of hours per week, which supports living costs. After graduation, students may apply for post-study work opportunities depending on their qualification. Scholarships are also available based on merit and academic performance. The country has strong links with global industries, which improves job opportunities after graduation. English is the main language, so students can easily communicate and build global networks.', 'To study in Australia, students must meet academic and English language requirements. A valid academic certificate from previous studies is required. English proficiency tests like IELTS, TOEFL, or PTE are commonly accepted. Students must provide a Statement of Purpose (SOP) explaining their study goals. Some courses may require additional documents like portfolios or work experience. Financial proof is necessary to show the ability to cover tuition and living expenses. A valid passport and health insurance are also required. After receiving an offer letter, students must apply for a student visa and complete biometric and medical checks. Meeting all requirements ensures a smooth admission process.', 'Australia offers a relaxed and friendly lifestyle. People are open, supportive, and culturally diverse. Students can enjoy a balanced life with study, part-time work, and social activities. The country has a strong outdoor culture, including beaches, parks, and sports. Public transport is well developed, making travel easy. Food options are diverse due to the multicultural population. Students feel safe due to low crime rates and strong laws. Festivals, events, and student communities help build connections. The lifestyle promotes independence and personal growth. Overall, Australia provides a welcoming and enjoyable environment for international students.', 1),
+(3, '69d76b1a82eeb1775725338.webp', '69d76b1a830c01775725338.webp', 'New Zealand', 'New Zealand is known for its peaceful environment, high-quality education, and natural beauty. It offers globally recognized degrees and a supportive academic system. Cities like Auckland and Wellington provide a safe and student-friendly atmosphere. The country focuses on research, innovation, and practical learning. New Zealand is less crowded, which creates a calm and focused study environment. It is also known for its welcoming people and strong student support services. The education system encourages critical thinking and independent learning. With mountains, lakes, and green landscapes, students enjoy both academic and personal growth.', 'New Zealand offers programs in engineering, IT, agriculture, business, and environmental studies. Universities provide modern teaching methods and research opportunities. Students can work part-time during studies to support their expenses. Many programs include internships and practical training. After graduation, students may apply for post-study work opportunities. Scholarships are available based on academic performance. The country has strong links with industries, which helps students gain job opportunities. English is the main language, making communication easy for international students.', 'Students must provide academic transcripts and certificates from previous education. English language tests like IELTS or TOEFL are required. A Statement of Purpose (SOP) is needed to explain study goals. Some courses may require additional documents such as portfolios or work experience. Financial proof is required to cover tuition and living costs. A valid passport and health insurance are also necessary. After receiving an offer letter, students must apply for a student visa and complete medical checks. Proper documentation ensures a smooth process.', 'New Zealand offers a relaxed and peaceful lifestyle. People are friendly, respectful, and welcoming. The country has a strong outdoor culture, including hiking, sports, and nature activities. Students enjoy clean cities and a safe environment. Public transport is available, though many people prefer personal travel. The culture values balance between work and life. Students can participate in community events and cultural activities. Overall, New Zealand provides a calm and supportive environment for studying and living.', 4),
 (4, '69d76eca69f3c1775726282.webp', '69d76eca6a4ab1775726282.webp', 'Canada', 'Canada is a top destination for international students due to its high-quality education and welcoming environment. It is known for safety, diversity, and strong academic standards. Universities and colleges offer globally recognized degrees with modern facilities. Cities like Toronto, Vancouver, and Montreal are student-friendly and culturally rich. Canada focuses on research, innovation, and practical learning. The country has a strong economy and provides excellent career opportunities after graduation. Students can work part-time while studying, which helps manage expenses. The natural beauty of Canada, including mountains and lakes, adds to its appeal. It is considered one of the safest countries in the world.', 'Canada offers a wide range of programs in business, engineering, IT, healthcare, and more. Institutions provide co-op programs and internships, allowing students to gain real-world experience. Students can work part-time during studies and full-time during scheduled breaks. After graduation, many students apply for post-graduation work permits. Scholarships and financial aid options are available for international students. Canada’s education system is flexible and focuses on skill development. English and French are widely used, giving students a chance to learn in a bilingual environment. Strong industry connections help students find jobs after completing their studies.', 'Students need academic certificates, transcripts, and English proficiency test results like IELTS or TOEFL. Some institutions may require additional tests or portfolios depending on the course. A Statement of Purpose (SOP) and recommendation letters are often required. Financial proof is necessary to show the ability to cover tuition and living costs. Students must also provide a valid passport and medical documents. After receiving an offer letter, students apply for a study permit. Biometric data and visa processing steps must be completed. Meeting all requirements ensures a smooth admission process.', 'Canada offers a high quality of life with a safe and peaceful environment. It is a multicultural country where people from different backgrounds live together. Students enjoy modern facilities, clean cities, and excellent healthcare services. The lifestyle is balanced, with opportunities for study, work, and leisure. Winter can be cold, but students adapt easily with proper preparation. Public transport is reliable, and cities are well organized. Festivals, cultural events, and student communities help students feel at home. Canada provides a welcoming and supportive environment for international students.', 3),
-(5, '69d76f07164611775726343.webp', '69d76f07166921775726343.webp', 'United State of America', 'The United States is one of the most popular study destinations in the world. It has top-ranked universities, advanced research facilities, and diverse academic programs. The country offers a flexible education system that allows students to choose their subjects and majors. Cities like New York, Los Angeles, and Chicago provide global exposure and career opportunities. The USA is known for innovation, technology, and academic excellence. Students from all over the world come here for higher education. The degrees are globally recognized, and the country offers strong professional growth opportunities.', 'The USA offers a wide range of programs in almost every field, including business, IT, engineering, medicine, and arts. Universities provide modern teaching methods, research opportunities, and internships. Students can work part-time on campus during their studies. Many programs include practical training like OPT (Optional Practical Training). Scholarships and financial aid are available for international students. The education system focuses on creativity, innovation, and skill development. Strong industry connections help students build successful careers after graduation.', 'Students need academic transcripts, certificates, and English proficiency test scores like IELTS or TOEFL. Some universities require standardized tests like SAT, GRE, or GMAT. A Statement of Purpose (SOP) and recommendation letters are essential. Financial proof is required to show the ability to cover expenses. Students must also provide a valid passport. After receiving an offer letter, students apply for a student visa and attend a visa interview. Proper preparation is important for a successful application.', 'The USA offers a diverse and dynamic lifestyle. It is a multicultural country with people from different backgrounds. Students can experience modern cities, entertainment, and global culture. The lifestyle is fast-paced but full of opportunities. Public transport is available in major cities. Students can join clubs, events, and networking programs. Food, culture, and traditions vary across regions. The country encourages independence and personal growth. Overall, students gain valuable life and career experience.', 4);
+(5, '69d76f07164611775726343.webp', '69d76f07166921775726343.webp', 'United State of America', 'The United States is one of the most popular study destinations in the world. It has top-ranked universities, advanced research facilities, and diverse academic programs. The country offers a flexible education system that allows students to choose their subjects and majors. Cities like New York, Los Angeles, and Chicago provide global exposure and career opportunities. The USA is known for innovation, technology, and academic excellence. Students from all over the world come here for higher education. The degrees are globally recognized, and the country offers strong professional growth opportunities.', 'The USA offers a wide range of programs in almost every field, including business, IT, engineering, medicine, and arts. Universities provide modern teaching methods, research opportunities, and internships. Students can work part-time on campus during their studies. Many programs include practical training like OPT (Optional Practical Training). Scholarships and financial aid are available for international students. The education system focuses on creativity, innovation, and skill development. Strong industry connections help students build successful careers after graduation.', 'Students need academic transcripts, certificates, and English proficiency test scores like IELTS or TOEFL. Some universities require standardized tests like SAT, GRE, or GMAT. A Statement of Purpose (SOP) and recommendation letters are essential. Financial proof is required to show the ability to cover expenses. Students must also provide a valid passport. After receiving an offer letter, students apply for a student visa and attend a visa interview. Proper preparation is important for a successful application.', 'The USA offers a diverse and dynamic lifestyle. It is a multicultural country with people from different backgrounds. Students can experience modern cities, entertainment, and global culture. The lifestyle is fast-paced but full of opportunities. Public transport is available in major cities. Students can join clubs, events, and networking programs. Food, culture, and traditions vary across regions. The country encourages independence and personal growth. Overall, students gain valuable life and career experience.', 5);
 
 -- --------------------------------------------------------
 
@@ -248,9 +276,9 @@ CREATE TABLE `event` (
 --
 
 INSERT INTO `event` (`id`, `event_image`, `title`, `date_time`, `location`, `description`, `position`) VALUES
-(1, '', 'Global Education Expo 2026', '2026-04-30 16:37:00', 'Dhaka, Bangladesh', 'The Global Education Expo 2026 is one of the largest international education events designed for students who are planning to study abroad. This event brings together representatives from top universities and colleges from countries such as Australia, Canada, the USA, the UK, Malaysia, and more. It provides a unique opportunity for students to interact directly with university delegates, ask questions, and receive accurate information about admission requirements, courses, tuition fees, and scholarship opportunities.\r\n\r\nAt this event, students will receive personalized counseling from experienced education consultants who will guide them in selecting the best course and destination based on their academic background and career goals. There will also be sessions focused on visa application processes, SOP writing, and interview preparation. Students can learn about the latest immigration policies and post-study work opportunities in different countries.\r\n\r\nIn addition, the expo will feature on-spot application opportunities where students can submit their documents and receive instant feedback. Special seminars and workshops will be conducted throughout the day to help students understand the entire study abroad journey. This event is ideal for students who want clear guidance, expert advice, and direct access to global education opportunities in one place.', 1),
-(2, '', 'Study Abroad Seminar &amp; Career Counseling', '2026-04-25 18:40:00', 'Chattogram, Bangladesh', 'The Study Abroad Seminar & Career Counseling event is designed to help students make informed decisions about their higher education and future careers. This seminar focuses on providing detailed guidance on selecting the right country, university, and course based on individual goals and financial capacity. Experienced counselors will explain different study pathways and help students understand the admission process step by step.\r\n\r\nDuring the seminar, students will learn about popular study destinations such as Canada, Australia, the USA, Germany, and Malaysia. Experts will discuss eligibility criteria, required documents, English proficiency tests, and visa application procedures. The event will also include sessions on writing effective Statements of Purpose (SOP) and preparing strong academic profiles.\r\n\r\nStudents will have the opportunity to ask questions and receive personalized advice from professionals. The event also highlights scholarship opportunities and ways to manage study expenses abroad. By attending this seminar, students can gain a clear understanding of their options and build confidence in planning their international education journey. It is a valuable event for anyone looking to take the next step toward studying abroad.', 2),
-(3, '', 'Visa Success Workshop &amp; Interview Preparation', '2026-04-30 07:38:00', 'Sylhet, Bangladesh', 'The Visa Success Workshop & Interview Preparation event is specially organized for students who are preparing for their student visa applications. This workshop provides in-depth guidance on how to complete visa documentation accurately and increase the chances of approval. Experts will explain common reasons for visa rejection and how to avoid them.\r\n\r\nThe event includes practical training sessions where students can learn how to answer interview questions confidently and professionally. Mock interview sessions will be conducted to help students understand real interview scenarios and improve their communication skills. Special attention will be given to GS/GT requirements, financial documentation, and SOP alignment with visa expectations.\r\n\r\nStudents will also receive guidance on preparing necessary documents such as bank statements, affidavits, and medical reports. The workshop ensures that students understand every step of the visa process clearly. By the end of the session, participants will feel more confident and prepared for their visa interviews. This event is highly beneficial for students who want expert support and a higher success rate in their visa applications.', 3);
+(1, '', 'Global Education Expo 2026', '2026-04-30 16:37:00', 'Dhaka, Bangladesh', 'The Global Education Expo 2026 is one of the largest international education events designed for students who are planning to study abroad. This event brings together representatives from top universities and colleges from countries such as Australia, Canada, the USA, the UK, Malaysia, and more. It provides a unique opportunity for students to interact directly with university delegates, ask questions, and receive accurate information about admission requirements, courses, tuition fees, and scholarship opportunities.\r\n\r\nAt this event, students will receive personalized counseling from experienced education consultants who will guide them in selecting the best course and destination based on their academic background and career goals. There will also be sessions focused on visa application processes, SOP writing, and interview preparation. Students can learn about the latest immigration policies and post-study work opportunities in different countries.\r\n\r\nIn addition, the expo will feature on-spot application opportunities where students can submit their documents and receive instant feedback. Special seminars and workshops will be conducted throughout the day to help students understand the entire study abroad journey. This event is ideal for students who want clear guidance, expert advice, and direct access to global education opportunities in one place.', 0),
+(2, '', 'Study Abroad Seminar &amp; Career Counseling', '2026-04-25 18:40:00', 'Chattogram, Bangladesh', 'The Study Abroad Seminar & Career Counseling event is designed to help students make informed decisions about their higher education and future careers. This seminar focuses on providing detailed guidance on selecting the right country, university, and course based on individual goals and financial capacity. Experienced counselors will explain different study pathways and help students understand the admission process step by step.\r\n\r\nDuring the seminar, students will learn about popular study destinations such as Canada, Australia, the USA, Germany, and Malaysia. Experts will discuss eligibility criteria, required documents, English proficiency tests, and visa application procedures. The event will also include sessions on writing effective Statements of Purpose (SOP) and preparing strong academic profiles.\r\n\r\nStudents will have the opportunity to ask questions and receive personalized advice from professionals. The event also highlights scholarship opportunities and ways to manage study expenses abroad. By attending this seminar, students can gain a clear understanding of their options and build confidence in planning their international education journey. It is a valuable event for anyone looking to take the next step toward studying abroad.', 1),
+(3, '', 'Visa Success Workshop &amp; Interview Preparation', '2026-04-30 07:38:00', 'Sylhet, Bangladesh', 'The Visa Success Workshop & Interview Preparation event is specially organized for students who are preparing for their student visa applications. This workshop provides in-depth guidance on how to complete visa documentation accurately and increase the chances of approval. Experts will explain common reasons for visa rejection and how to avoid them.\r\n\r\nThe event includes practical training sessions where students can learn how to answer interview questions confidently and professionally. Mock interview sessions will be conducted to help students understand real interview scenarios and improve their communication skills. Special attention will be given to GS/GT requirements, financial documentation, and SOP alignment with visa expectations.\r\n\r\nStudents will also receive guidance on preparing necessary documents such as bank statements, affidavits, and medical reports. The workshop ensures that students understand every step of the visa process clearly. By the end of the session, participants will feel more confident and prepared for their visa interviews. This event is highly beneficial for students who want expert support and a higher success rate in their visa applications.', 2);
 
 -- --------------------------------------------------------
 
@@ -269,6 +297,28 @@ CREATE TABLE `event_registration` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `event_registrations`
+--
+
+CREATE TABLE `event_registrations` (
+  `id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `event_registrations`
+--
+
+INSERT INTO `event_registrations` (`id`, `event_id`, `name`, `email`, `phone`, `created_at`) VALUES
+(1, 2, 'MD Mehedi Hasan', 'mehedihasan19191313@gmail.com', '01256984', '2026-04-12 06:50:18');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `gallery`
 --
 
@@ -280,6 +330,14 @@ CREATE TABLE `gallery` (
   `position` int(11) DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `gallery`
+--
+
+INSERT INTO `gallery` (`id`, `image`, `caption`, `location`, `position`, `created_at`) VALUES
+(1, '69db5b0a90e761775983370.jpg', 'TESTING', 'Bandar Saujana Putra, Jenjarom, Selangor', 1, '2026-04-12 08:42:50'),
+(2, '69db5cc88583c1775983816.jpg', 'TESTING 1', 'Melbourne, Victoria', 2, '2026-04-12 08:50:16');
 
 -- --------------------------------------------------------
 
@@ -379,6 +437,13 @@ CREATE TABLE `social_media` (
   `position` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `social_media`
+--
+
+INSERT INTO `social_media` (`id`, `social_media_name`, `link`, `icon`, `position`) VALUES
+(1, 'Facebook', 'https://chatgpt.com/c/69db5c0d-7860-83a2-828c-832f12c01d65', 'ph ph-facebook-logo', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -396,7 +461,7 @@ CREATE TABLE `subscriber` (
 --
 
 INSERT INTO `subscriber` (`id`, `email`, `created_at`) VALUES
-(1, 'mehedihasan19191313@gmail.com', '2026-04-08 09:00:12');
+(3, 'mehedimridul1919@gmail.com', '2026-04-12 06:13:29');
 
 -- --------------------------------------------------------
 
@@ -422,7 +487,10 @@ CREATE TABLE `team` (
 --
 
 INSERT INTO `team` (`id`, `profile_image`, `name`, `team_name`, `designation`, `say`, `joining_date`, `blood_group`, `certified_by`, `position`) VALUES
-(1, '69d737be32ddb1775712190.png', 'MD Mehedi Hasan', 'IT', 'Developer', '', '2026-02-01', 'O+', 'Unilink Global Solution', 1);
+(1, '69d737be32ddb1775712190.png', 'MD Mehedi Hasan', 'IT', 'Developer', 'I am pleased to write this letter of recommendation for Umarova Aliya (Student ID: 0002125), a dedicated and intellectually capable student of the Technical School of Innovation AUCA, who successfully completed her academic program in 2025. During her time at our institution, Aliya consistently demonstrated strong academic commitment, analytical ability, and a disciplined approach to learning. Her academic record reflects a solid performance across a diverse range of subjects, including data analysis, economics, entrepreneurship, and interdisciplinary projects. She showed particular strength in courses such as Data Analysis and Visualization, Microeconomics for Business, and Critical Thinking, where she applied theoretical concepts to practical scenarios with clarity and precision. Her ability to synthesize complex information and present it in structured formats sets her apart as a thoughtful and capable learner. Aliya is a motivated and responsible individual who actively engages in academic challenges and consistently strives for excellence. I am confident that she possesses the intellectual capacity, determination, and academic maturity required for higher education.', '2026-02-01', 'O+', 'Unilink Global Solution', 2),
+(2, '69db57f98d2461775982585.jpg', 'Md. Rahim Uddin', 'Marketing', 'Marketing Officer', '', '2026-04-01', 'O+', '', 3),
+(3, '69db58c13cf321775982785.jpg', 'MD Nazmul Hasan', 'Management', 'Founder and CEO', 'I am pleased to write this letter of recommendation for Umarova Aliya (Student ID: 0002125), a dedicated and intellectually capable student of the Technical School of Innovation AUCA, who successfully completed her academic program in 2025. During her time at our institution, Aliya consistently demonstrated strong academic commitment, analytical ability, and a disciplined approach to learning. Her academic record reflects a solid performance across a diverse range of subjects, including data analysis, economics, entrepreneurship, and interdisciplinary projects. She showed particular strength in courses such as Data Analysis and Visualization, Microeconomics for Business, and Critical Thinking, where she applied theoretical concepts to practical scenarios with clarity and precision. Her ability to synthesize complex information and present it in structured formats sets her apart as a thoughtful and capable learner. Aliya is a motivated and responsible individual who actively engages in academic challenges and consistently strives for excellence. I am confident that she possesses the intellectual capacity, determination, and academic maturity required for higher education.', '2026-04-01', 'O+', '', 1),
+(4, '69db5aa032e821775983264.jpg', 'MD Fahad Hosen', 'IT', 'Designer', '', '2026-04-01', 'O+', '', 4);
 
 -- --------------------------------------------------------
 
@@ -612,6 +680,12 @@ ALTER TABLE `chatbot_leads`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `contact_messages`
+--
+ALTER TABLE `contact_messages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `country`
 --
 ALTER TABLE `country`
@@ -627,6 +701,12 @@ ALTER TABLE `event`
 -- Indexes for table `event_registration`
 --
 ALTER TABLE `event_registration`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `event_registrations`
+--
+ALTER TABLE `event_registrations`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -709,7 +789,7 @@ ALTER TABLE `achievement`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `appointment`
@@ -733,6 +813,12 @@ ALTER TABLE `blog_comments`
 -- AUTO_INCREMENT for table `chatbot_leads`
 --
 ALTER TABLE `chatbot_leads`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `contact_messages`
+--
+ALTER TABLE `contact_messages`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
@@ -754,10 +840,16 @@ ALTER TABLE `event_registration`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `event_registrations`
+--
+ALTER TABLE `event_registrations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `hero`
@@ -781,19 +873,19 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT for table `social_media`
 --
 ALTER TABLE `social_media`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `subscriber`
 --
 ALTER TABLE `subscriber`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `team`
 --
 ALTER TABLE `team`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `testimonial`

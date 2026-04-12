@@ -12,7 +12,7 @@ require_once __DIR__ . '/components/header.php';
     <div class="container mx-auto px-4 relative z-10 text-center">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 animate-on-scroll">Book an Appointment</h1>
         <div class="flex items-center justify-center gap-2 text-slate-300 text-sm font-medium animate-on-scroll delay-100">
-            <a href="index.php" class="hover:text-secondary transition">Home</a>
+            <a href="index" class="hover:text-secondary transition">Home</a>
             <i class="ph ph-caret-right"></i>
             <span class="text-secondary">Appointment</span>
         </div>
@@ -36,7 +36,7 @@ require_once __DIR__ . '/components/header.php';
                 <!-- Decorative top bar border -->
                 <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary via-secondary to-accent"></div>
                 
-                <form action="process_form.php" method="POST" class="space-y-10 mt-4">
+                <form action="process_form" method="POST" class="space-y-10 mt-4">
                     <input type="hidden" name="form_type" value="appointment">
                     <input type="text" name="honeypot" class="hidden">
 

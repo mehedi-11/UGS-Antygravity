@@ -21,7 +21,7 @@ try {
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 animate-on-scroll">Our Blog & News</h1>
         <p class="text-lg text-slate-300 max-w-2xl mx-auto mb-6 animate-on-scroll delay-100">Latest updates, study guides, and success stories from our global education experts.</p>
         <div class="flex items-center justify-center gap-2 text-slate-400 text-sm font-medium animate-on-scroll delay-200">
-            <a href="index.php" class="hover:text-secondary transition">Home</a>
+            <a href="index" class="hover:text-secondary transition text-slate-500 font-bold">Home</a>
             <i class="ph ph-caret-right"></i>
             <span class="text-secondary">Blog</span>
         </div>
@@ -35,7 +35,7 @@ try {
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php foreach($blogs as $index => $blog): ?>
                     <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-500 border border-slate-100 group flex flex-col animate-on-scroll" style="animation-delay: <?php echo ($index * 50); ?>ms;">
-                        <a href="blog-details.php?id=<?php echo $blog['id']; ?>" class="block h-56 overflow-hidden relative">
+                        <a href="blog-<?php echo $blog['id']; ?>-<?php echo slugify($blog['title']); ?>" class="block h-56 overflow-hidden relative">
                             <?php if($blog['image']): ?>
                                 <img src="uploads/blogs/<?php echo htmlspecialchars($blog['image']); ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-in-out">
                             <?php else: ?>
@@ -55,7 +55,7 @@ try {
                             </div>
                             
                             <h3 class="text-2xl font-bold text-dark mb-4 leading-snug group-hover:text-secondary transition line-clamp-2">
-                                <a href="blog-details.php?id=<?php echo $blog['id']; ?>"><?php echo htmlspecialchars($blog['title']); ?></a>
+                                <a href="blog-<?php echo $blog['id']; ?>-<?php echo slugify($blog['title']); ?>"><?php echo htmlspecialchars($blog['title']); ?></a>
                             </h3>
                             
                             <p class="text-slate-500 text-sm leading-relaxed mb-6 flex-grow line-clamp-3">
@@ -68,7 +68,7 @@ try {
                                     <span class="flex items-center gap-1" title="Comments"><i class="ph-fill ph-chat-circle text-primary"></i> <?php echo $blog['comment_count']; ?></span>
                                     <span class="flex items-center gap-1" title="Shares"><i class="ph-fill ph-share-network text-slate-400"></i> <?php echo $blog['shares']; ?></span>
                                 </div>
-                                <a href="blog-details.php?id=<?php echo $blog['id']; ?>" class="w-10 h-10 rounded-full bg-slate-50 hover:bg-secondary text-slate-600 hover:text-white flex items-center justify-center transition" title="Read Article">
+                                <a href="blog-<?php echo $blog['id']; ?>-<?php echo slugify($blog['title']); ?>" class="w-10 h-10 rounded-full bg-slate-50 hover:bg-secondary text-slate-600 hover:text-white flex items-center justify-center transition" title="Read Article">
                                     <i class="ph ph-arrow-right text-lg"></i>
                                 </a>
                             </div>

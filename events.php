@@ -16,7 +16,7 @@ if ($id > 0) {
 
     if(!$event) {
         set_flash_msg('error', 'Event not found.');
-        redirect('events.php');
+        redirect('events');
     }
     ?>
     <!-- Event Hero Header -->
@@ -29,9 +29,9 @@ if ($id > 0) {
                 
                 <div class="lg:w-2/3">
                     <div class="flex items-center gap-2 text-slate-400 text-sm font-bold uppercase tracking-widest mb-6 animate-on-scroll">
-                        <a href="index.php" class="hover:text-secondary transition text-slate-500">Home</a>
+                        <a href="/" class="hover:text-secondary transition text-slate-500">Home</a>
                         <i class="ph ph-caret-right"></i>
-                        <a href="events.php" class="hover:text-secondary transition text-slate-500">Events</a>
+                        <a href="events" class="hover:text-secondary transition text-slate-500">Events</a>
                         <i class="ph ph-caret-right"></i>
                         <span class="text-secondary">Event Details</span>
                     </div>
@@ -83,21 +83,63 @@ if ($id > 0) {
             <h2 class="text-2xl font-bold text-slate-800 mb-6 border-b border-slate-200 pb-4">Event Description</h2>
 
             <div class="prose prose-lg prose-slate max-w-none text-slate-600 leading-relaxed mb-12">
-                <?php echo nl2br(htmlspecialchars($event['details'])); ?>
+                <?php echo nl2br(htmlspecialchars($event['description'] ?? '')); ?>
             </div>
             
-            <div class="bg-white border text-center lg:text-left border-slate-100 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm overflow-hidden mt-8">
-                <div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-2">Book Your Spot Now</h3>
-                    <p class="text-slate-500 text-sm">Don't miss this opportunity to connect with our experts.</p>
+            <div class="bg-white border border-slate-100 rounded-3xl p-8 sm:p-12 shadow-md overflow-hidden mt-12 animate-on-scroll">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-10 border-b border-slate-100 pb-8">
+                    <div class="text-center md:text-left">
+                        <h3 class="text-2xl font-bold text-slate-800 mb-2">Book Your Spot Now</h3>
+                        <p class="text-slate-500 text-sm">Fill in your details below to secure your seat for this event.</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="px-4 py-2 bg-secondary/10 text-secondary rounded-full text-xs font-bold uppercase tracking-widest">Limited Seats</div>
+                    </div>
                 </div>
-                <a href="appointment.php" class="bg-secondary hover:bg-accent px-8 py-3.5 rounded-full font-bold transition flex-shrink-0 flex items-center gap-2 text-white shadow-md shadow-secondary/30">
-                    Register <i class="ph ph-arrow-right"></i>
-                </a>
+
+                <form action="process_form" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="hidden" name="form_type" value="event_registration">
+                    <input type="hidden" name="event_id" value="<?php echo $event['id']; ?>">
+                    <input type="hidden" name="event_title" value="<?php echo htmlspecialchars($event['title']); ?>">
+                    
+                    <div class="space-y-2">
+                        <label class="text-sm font-bold text-slate-700 ml-1">Full Name *</label>
+                        <div class="relative">
+                            <i class="ph ph-user absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                            <input type="text" name="name" placeholder="Enter your full name" required 
+                                class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition outline-none text-slate-600">
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-sm font-bold text-slate-700 ml-1">Email Address *</label>
+                        <div class="relative">
+                            <i class="ph ph-envelope absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                            <input type="email" name="email" placeholder="example@mail.com" required 
+                                class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition outline-none text-slate-600">
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-sm font-bold text-slate-700 ml-1">Phone / WhatsApp *</label>
+                        <div class="relative">
+                            <i class="ph ph-phone absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                            <input type="text" name="phone" placeholder="+880 1XXX-XXXXXX" required 
+                                class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition outline-none text-slate-600">
+                        </div>
+                    </div>
+
+                    <div class="flex items-end">
+                        <button type="submit" class="w-full bg-secondary hover:bg-accent text-white font-bold py-4 rounded-2xl shadow-lg shadow-secondary/20 transition transform hover:-translate-y-1 flex items-center justify-center gap-2 group">
+                            Confirm Registration 
+                            <i class="ph ph-paper-plane-right group-hover:translate-x-1 transition"></i>
+                        </button>
+                    </div>
+                </form>
             </div>
             
             <div class="text-center mt-12 border-t border-slate-200 pt-8">
-                <a href="events.php" class="inline-flex items-center gap-2 text-slate-500 hover:text-secondary font-bold transition"><i class="ph ph-arrow-left"></i> Back to all events</a>
+                <a href="events" class="inline-flex items-center gap-2 text-slate-500 hover:text-secondary font-bold transition"><i class="ph ph-arrow-left"></i> Back to all events</a>
             </div>
         </div>
     </section>
@@ -122,7 +164,7 @@ if ($id > 0) {
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 animate-on-scroll">Upcoming Events</h1>
             <p class="text-lg text-slate-300 max-w-2xl mx-auto mb-6 animate-on-scroll delay-100">Join our upcoming seminars, virtual webinars, and partner university visits.</p>
             <div class="flex items-center justify-center gap-2 text-slate-400 text-sm font-medium animate-on-scroll delay-200">
-                <a href="index.php" class="hover:text-secondary transition">Home</a>
+                <a href="index" class="hover:text-secondary transition">Home</a>
                 <i class="ph ph-caret-right"></i>
                 <span class="text-secondary">Events</span>
             </div>
@@ -151,7 +193,7 @@ if ($id > 0) {
                             
                             <div class="p-8 flex flex-col flex-grow">
                                 <h3 class="text-2xl font-bold text-dark mb-4 leading-snug group-hover:text-secondary transition line-clamp-2">
-                                    <a href="events.php?id=<?php echo $event['id']; ?>"><?php echo htmlspecialchars($event['title']); ?></a>
+                                    <a href="event-<?php echo $event['id']; ?>-<?php echo slugify($event['title']); ?>"><?php echo htmlspecialchars($event['title']); ?></a>
                                 </h3>
                                 
                                 <div class="space-y-2 mb-6">
@@ -166,7 +208,7 @@ if ($id > 0) {
                                 </div>
                                 
                                 <div class="mt-auto border-t border-slate-100 pt-6">
-                                    <a href="events.php?id=<?php echo $event['id']; ?>" class="inline-flex items-center gap-2 text-secondary font-bold hover:text-accent transition uppercase tracking-wider text-sm">
+                                    <a href="event-<?php echo $event['id']; ?>-<?php echo slugify($event['title']); ?>" class="inline-flex items-center gap-2 text-secondary font-bold hover:text-accent transition uppercase tracking-wider text-sm">
                                         Event Details <i class="ph ph-arrow-right"></i>
                                     </a>
                                 </div>

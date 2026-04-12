@@ -30,7 +30,7 @@ $stats = [
     <div class="container mx-auto px-4 relative z-10 text-center">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 animate-on-scroll">About <?php echo htmlspecialchars($company_name); ?></h1>
         <div class="flex items-center justify-center gap-2 text-slate-300 text-sm font-medium animate-on-scroll delay-100">
-            <a href="index.php" class="hover:text-secondary transition">Home</a>
+            <a href="index" class="hover:text-secondary transition">Home</a>
             <i class="ph ph-caret-right"></i>
             <span class="text-secondary">About Us</span>
         </div>

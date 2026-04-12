@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt = $pdo->prepare("UPDATE `$table` SET `position` = :position WHERE `id` = :id");
         
         foreach ($order as $index => $id) {
-            $stmt->execute(['position' => $index, 'id' => (int)$id]);
+            $stmt->execute(['position' => $index + 1, 'id' => (int)$id]);
         }
         
         $pdo->commit();

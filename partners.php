@@ -24,7 +24,7 @@ try {
     <div class="container mx-auto px-4 relative z-10 text-center">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 animate-on-scroll">Our Industry Partners</h1>
         <div class="flex items-center justify-center gap-2 text-slate-300 text-sm font-medium animate-on-scroll delay-100">
-            <a href="index.php" class="hover:text-secondary transition">Home</a>
+            <a href="index" class="hover:text-secondary transition">Home</a>
             <i class="ph ph-caret-right"></i>
             <span class="text-secondary">Partners</span>
         </div>
@@ -88,7 +88,7 @@ try {
     <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold mb-4">Want to partner with us?</h2>
         <p class="text-slate-400 mb-8 max-w-2xl mx-auto">We are always looking to expand our network to provide more valuable opportunities for international students.</p>
-        <a href="contact.php" class="inline-flex items-center gap-2 bg-secondary text-white px-8 py-3 rounded-full font-bold hover:bg-accent transition shadow-lg">Become a Partner <i class="ph ph-arrow-right"></i></a>
+        <a href="contact" class="inline-flex items-center gap-2 bg-secondary text-white px-8 py-3 rounded-full font-bold hover:bg-accent transition shadow-lg">Become a Partner <i class="ph ph-arrow-right"></i></a>
     </div>
 </section>
 

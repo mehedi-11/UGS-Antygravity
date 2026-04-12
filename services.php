@@ -19,7 +19,7 @@ try {
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-800 mb-4 animate-on-scroll tracking-tight">Our Services</h1>
         <p class="text-lg text-slate-500 max-w-2xl mx-auto mb-6 animate-on-scroll delay-100">Comprehensive support tailored to ensure your international education journey is seamless and successful.</p>
         <div class="flex items-center justify-center gap-2 text-slate-400 text-sm font-medium animate-on-scroll delay-200">
-            <a href="index.php" class="hover:text-secondary transition text-slate-500 font-bold">Home</a>
+            <a href="index" class="hover:text-secondary transition text-slate-500 font-bold">Home</a>
             <i class="ph ph-caret-right"></i>
             <span class="text-secondary font-bold">Services</span>
         </div>
@@ -52,7 +52,7 @@ try {
                         </p>
                         
                         <div class="mt-auto border-t border-slate-200 pt-6">
-                            <a href="contact.php" class="inline-flex items-center gap-2 text-slate-600 font-bold hover:text-secondary transition">Get Assistance <i class="ph ph-arrow-right"></i></a>
+                            <a href="contact" class="inline-flex items-center gap-2 text-slate-600 font-bold hover:text-secondary transition">Get Assistance <i class="ph ph-arrow-right"></i></a>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -78,7 +78,7 @@ try {
     <div class="container mx-auto px-4 relative z-10">
         <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Need personalized guidance?</h2>
         <p class="text-white/80 text-lg max-w-2xl mx-auto mb-10">Book a free consultation session with our experts today.</p>
-        <a href="appointment.php" class="bg-white hover:bg-slate-50 text-secondary px-10 py-4 text-lg rounded-full font-bold shadow-xl transition transform hover:-translate-y-1 inline-flex items-center gap-2">
+        <a href="appointment" class="bg-white hover:bg-slate-50 text-secondary px-10 py-4 text-lg rounded-full font-bold shadow-xl transition transform hover:-translate-y-1 inline-flex items-center gap-2">
             Book an Appointment <i class="ph ph-calendar-check"></i>
         </a>
     </div>

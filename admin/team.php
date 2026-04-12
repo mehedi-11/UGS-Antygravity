@@ -204,8 +204,21 @@ $team_members = $pdo->query("SELECT * FROM team ORDER BY position ASC")->fetchAl
                     table: 'team',
                     order: order
                 }, function(res) {
-                    if(res.status !== 'success') {
-                        alert('Could not update position: ' + res.message);
+                    if(res.status === 'success') {
+                        // Success Toast
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 2000,
+                            timerProgressBar: true
+                        });
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Positions updated successfully'
+                        });
+                    } else {
+                        Swal.fire('Error', 'Could not update position: ' + res.message, 'error');
                     }
                 });
             }

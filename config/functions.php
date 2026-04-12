@@ -3,6 +3,12 @@
 ob_start();
 session_start();
 require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/mailer.php';
+
+// Composer Autoload
+if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
+    require_once __DIR__ . '/../vendor/autoload.php';
+}
 
 // Redirect helper
 function redirect($url) {
@@ -13,7 +19,13 @@ function redirect($url) {
 // Check logged in admin
 function check_login() {
     if(!isset($_SESSION['admin_id'])) {
-        redirect('/admin/index.php');
+        // Find if we are in admin folder or not
+        $path = $_SERVER['PHP_SELF'];
+        if (strpos($path, '/admin/') !== false) {
+            redirect('index.php');
+        } else {
+            redirect('admin/index.php');
+        }
     }
 }
 
@@ -78,4 +90,19 @@ function upload_image($file, $target_dir) {
         }
     }
     return false;
+}
+
+// Global Slugify Helper Function
+if (!function_exists('slugify')) {
+    function slugify($text) {
+        $text = preg_replace('~[^\pL\d]+~u', '-', $text);
+        if (function_exists('iconv')) {
+            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        }
+        $text = preg_replace('~[^-\w]+~', '', $text);
+        $text = trim($text, '-');
+        $text = preg_replace('~-+~', '-', $text);
+        $text = strtolower($text);
+        return empty($text) ? 'n-a' : $text;
+    }
 }

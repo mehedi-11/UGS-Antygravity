@@ -15,7 +15,7 @@ if ($id > 0) {
 
 if (!$university) {
     set_flash_msg('error', 'University not found.');
-    redirect('universities.php');
+    redirect('universities');
 }
 ?>
 
@@ -39,9 +39,9 @@ if (!$university) {
             <!-- Information -->
             <div class="md:w-2/3">
                 <div class="flex flex-wrap items-center gap-2 text-slate-300 text-sm font-bold uppercase tracking-widest mb-6 animate-on-scroll">
-                    <a href="index.php" class="hover:text-secondary transition text-slate-400">Home</a>
+                    <a href="index" class="hover:text-secondary transition text-slate-400">Home</a>
                     <i class="ph ph-caret-right text-slate-500"></i>
-                    <a href="universities.php" class="hover:text-secondary transition text-slate-400">Universities</a>
+                    <a href="universities" class="hover:text-secondary transition text-slate-400">Universities</a>
                     <i class="ph ph-caret-right text-slate-500"></i>
                     <span class="text-secondary"><?php echo htmlspecialchars($university['university_name']); ?></span>
                 </div>
@@ -62,7 +62,7 @@ if (!$university) {
                 </div>
                 
                 <div class="flex flex-wrap gap-4 animate-on-scroll delay-300">
-                    <a href="appointment.php" class="bg-secondary hover:bg-accent text-white px-8 py-3.5 rounded-full font-bold shadow-lg shadow-orange-500/30 transition transform hover:-translate-y-1 flex items-center gap-2">
+                    <a href="appointment" class="bg-secondary hover:bg-accent text-white px-8 py-3.5 rounded-full font-bold shadow-lg shadow-orange-500/30 transition transform hover:-translate-y-1 flex items-center gap-2">
                         Apply Now <i class="ph ph-paper-plane-tilt"></i>
                     </a>
                 </div>
@@ -137,7 +137,7 @@ if (!$university) {
                         <i class="ph flex justify-center ph-headset text-5xl text-secondary mb-4 w-full"></i>
                         <h3 class="text-xl font-bold mb-2">Need Guidance?</h3>
                         <p class="text-slate-400 text-sm mb-6 leading-relaxed">Our expert counselors can help you with the admission process and visa applications.</p>
-                        <a href="appointment.php" class="bg-secondary hover:bg-accent text-white px-6 py-3 rounded-full font-bold transition w-full block">
+                        <a href="appointment" class="bg-secondary hover:bg-accent text-white px-6 py-3 rounded-full font-bold transition w-full block">
                             Consult an Expert
                         </a>
                     </div>
@@ -148,7 +148,7 @@ if (!$university) {
         </div>
         
         <div class="text-center mt-12 animate-on-scroll delay-200">
-            <a href="universities.php" class="inline-flex items-center gap-2 text-slate-500 hover:text-secondary font-bold transition bg-white px-8 py-3 rounded-full border border-slate-200 shadow-sm"><i class="ph ph-arrow-left"></i> Back to all Universities</a>
+            <a href="universities" class="inline-flex items-center gap-2 text-slate-500 hover:text-secondary font-bold transition bg-white px-8 py-3 rounded-full border border-slate-200 shadow-sm"><i class="ph ph-arrow-left"></i> Back to all Universities</a>
         </div>
     </div>
 </section>

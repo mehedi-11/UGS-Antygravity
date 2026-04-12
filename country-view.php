@@ -22,7 +22,7 @@ if ($id > 0) {
 
 if (!$country) {
     set_flash_msg('error', 'Destination not found.');
-    redirect('destinations.php');
+    redirect('destinations');
 }
 ?>
 
@@ -37,9 +37,9 @@ if (!$country) {
             <!-- Information -->
             <div class="lg:w-1/2">
                 <div class="flex items-center gap-2 text-slate-400 text-sm font-bold uppercase tracking-widest mb-6 animate-on-scroll">
-                    <a href="index.php" class="hover:text-secondary transition">Home</a>
+                    <a href="index" class="hover:text-secondary transition">Home</a>
                     <i class="ph ph-caret-right"></i>
-                    <a href="destinations.php" class="hover:text-secondary transition">Destinations</a>
+                    <a href="destinations" class="hover:text-secondary transition">Destinations</a>
                     <i class="ph ph-caret-right"></i>
                     <span class="text-secondary"><?php echo htmlspecialchars($country['country_name']); ?></span>
                 </div>
@@ -58,7 +58,7 @@ if (!$country) {
                     <a href="#universities-section" class="bg-secondary hover:bg-accent text-white px-8 py-3.5 rounded-full font-bold shadow-lg shadow-orange-500/30 transition transform hover:-translate-y-1 flex items-center gap-2">
                         Explore Universities <i class="ph ph-arrow-down"></i>
                     </a>
-                    <a href="appointment.php" class="bg-white border border-slate-200 hover:border-secondary hover:text-secondary text-slate-600 px-8 py-3.5 rounded-full font-bold shadow-sm transition transform hover:-translate-y-1 flex items-center gap-2">
+                    <a href="appointment" class="bg-white border border-slate-200 hover:border-secondary hover:text-secondary text-slate-600 px-8 py-3.5 rounded-full font-bold shadow-sm transition transform hover:-translate-y-1 flex items-center gap-2">
                         Book Consultation <i class="ph ph-calendar-check"></i>
                     </a>
                 </div>
@@ -151,7 +151,7 @@ if (!$country) {
         <?php if(!empty($universities)): ?>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php foreach($universities as $index => $uni): ?>
-                    <a href="university-view.php?id=<?php echo $uni['id']; ?>" class="bg-slate-50 rounded-3xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300 border border-slate-100 group flex flex-col text-center block animate-on-scroll" style="animation-delay: <?php echo ($index * 100); ?>ms;">
+                    <a href="university-<?php echo $uni['id']; ?>-<?php echo slugify($uni['university_name']); ?>" class="bg-slate-50 rounded-3xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300 border border-slate-100 group flex flex-col text-center block animate-on-scroll" style="animation-delay: <?php echo ($index * 100); ?>ms;">
                         
                         <div class="h-40 mb-6 flex items-center justify-center bg-white rounded-2xl relative overflow-hidden shadow-sm border border-slate-100 group-hover:border-secondary/20 transition">
                             <?php if(!empty($uni['university_logo'])): ?>
@@ -189,7 +189,7 @@ if (!$country) {
                 <h3 class="text-xl font-bold text-slate-700 mb-2">No Universities Listed Yet</h3>
                 <p class="text-slate-500 max-w-md mx-auto">We are currently updating our database for universities in <?php echo htmlspecialchars($country['country_name']); ?>.</p>
                 <div class="mt-6">
-                    <a href="contact.php" class="inline-flex items-center gap-2 text-secondary font-bold hover:text-accent transition">Contact us for details <i class="ph ph-arrow-right"></i></a>
+                    <a href="contact" class="inline-flex items-center gap-2 text-secondary font-bold hover:text-accent transition">Contact us for details <i class="ph ph-arrow-right"></i></a>
                 </div>
             </div>
         <?php endif; ?>

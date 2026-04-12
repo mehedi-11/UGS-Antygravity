@@ -12,10 +12,15 @@ $current_page = basename($_SERVER['PHP_SELF']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - Unilink Global Solution</title>
+    <?php 
+        $page_name = str_replace(['_', '.php'], [' ', ''], $current_page);
+        $page_name = ucwords($page_name == 'index' ? 'Login' : $page_name);
+    ?>
+    <title><?php echo $page_name; ?> - Unilink Global Admin</title>
     
     <!-- Fonts -->
-    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
@@ -174,6 +179,14 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 </h2>
             </div>
             <div class="flex items-center gap-4">
+                <div class="hidden md:flex items-center gap-2 mr-4 border-r pr-4 border-slate-200">
+                    <?php if(has_permission('manage_contacts')): ?>
+                    <a href="contacts.php" class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 transition text-sm font-medium" title="Contact Messages">
+                        <i class="ph-fill ph-chat-centered-dots text-secondary"></i>
+                        <span>Messages</span>
+                    </a>
+                    <?php endif; ?>
+                </div>
                 <div class="text-sm text-slate-600 hidden sm:block">
                     Welcome, <span class="font-bold text-slate-800"><?php echo htmlspecialchars($_SESSION['admin_name']); ?></span>
                 </div>

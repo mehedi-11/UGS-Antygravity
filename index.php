@@ -79,7 +79,7 @@ try {
 
                 <div class="flex flex-wrap justify-center gap-4 animate-on-scroll delay-200">
                     <?php if ($hero_slide['button_text']): ?>
-                        <a href="<?php echo htmlspecialchars($hero_slide['button_link'] ?: 'contact.php'); ?>"
+                        <a href="<?php echo htmlspecialchars($hero_slide['button_link'] ?: 'contact'); ?>"
                             class="bg-secondary hover:bg-accent px-8 py-3.5 rounded-full font-bold text-white transition transform hover:-translate-y-1 flex items-center gap-2 shadow-lg shadow-secondary/30">
                             <?php echo htmlspecialchars($hero_slide['button_text']); ?> <i class="ph ph-arrow-right"></i>
                         </a>
@@ -100,30 +100,72 @@ try {
         </div>
 
         <!-- ABOUT COUNTERS STATISTICS IN HERO -->
-        <div class="mt-20 pt-10 max-w-5xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="mt-20 pt-10 max-w-5xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 border-t border-slate-100/50">
             <div class="animate-on-scroll delay-200">
-                <div class="text-3xl lg:text-4xl font-extrabold text-secondary mb-1">
-                    <?php echo htmlspecialchars($about['country'] ?? '10+'); ?></div>
-                <div class="text-sm font-bold text-slate-400 tracking-wider">COUNTRIES</div>
+                <div class="text-3xl lg:text-5xl font-black text-secondary mb-1">
+                    <span class="counter" data-target="<?php echo preg_replace('/[^0-9]/', '', $about['country'] ?? '10'); ?>">0</span>+
+                </div>
+                <div class="text-xs font-bold text-slate-400 tracking-[0.2em] uppercase">Countries</div>
             </div>
             <div class="animate-on-scroll delay-300">
-                <div class="text-3xl lg:text-4xl font-extrabold text-secondary mb-1">
-                    <?php echo htmlspecialchars($about['university'] ?? '500+'); ?></div>
-                <div class="text-sm font-bold text-slate-400 tracking-wider">UNIVERSITIES</div>
+                <div class="text-3xl lg:text-5xl font-black text-secondary mb-1">
+                    <span class="counter" data-target="<?php echo preg_replace('/[^0-9]/', '', $about['university'] ?? '500'); ?>">0</span>+
+                </div>
+                <div class="text-xs font-bold text-slate-400 tracking-[0.2em] uppercase">Universities</div>
             </div>
             <div class="animate-on-scroll delay-400">
-                <div class="text-3xl lg:text-4xl font-extrabold text-secondary mb-1">
-                    <?php echo htmlspecialchars($about['student'] ?? '50k+'); ?></div>
-                <div class="text-sm font-bold text-slate-400 tracking-wider">STUDENTS GUIDED</div>
+                <div class="text-3xl lg:text-5xl font-black text-secondary mb-1">
+                    <span class="counter" data-target="<?php echo preg_replace('/[^0-9]/', '', $about['student'] ?? '5000'); ?>">0</span>+
+                </div>
+                <div class="text-xs font-bold text-slate-400 tracking-[0.2em] uppercase">Students Guided</div>
             </div>
             <div class="animate-on-scroll delay-500">
-                <div class="text-3xl lg:text-4xl font-extrabold text-secondary mb-1">
-                    <?php echo htmlspecialchars($about['happy_smile'] ?? '98%'); ?></div>
-                <div class="text-sm font-bold text-slate-400 tracking-wider">HAPPY SMILES</div>
+                <div class="text-3xl lg:text-5xl font-black text-secondary mb-1">
+                    <span class="counter" data-target="<?php echo preg_replace('/[^0-9]/', '', $about['happy_smile'] ?? '99'); ?>">0</span>%
+                </div>
+                <div class="text-xs font-bold text-slate-400 tracking-[0.2em] uppercase">Success Rate</div>
             </div>
         </div>
     </div>
 </section>
+
+<!-- Counter Script -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // The lower the slower
+
+        const startCounting = (el) => {
+            const target = +el.getAttribute('data-target');
+            const count = +el.innerText;
+            const inc = target / speed;
+
+            if (count < target) {
+                el.innerText = Math.ceil(count + inc);
+                setTimeout(() => startCounting(el), 1);
+            } else {
+                el.innerText = target;
+            }
+        };
+
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startCounting(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
+    });
+</script>
 
 <!-- INDUSTRY PARTNERS LOGO SCROLL -->
 <?php if (!empty($partners)): ?>
@@ -137,7 +179,7 @@ try {
                 // Duplicate the list deeply to ensure a seamless infinite loop even on ultra-wide screens
                 $marquee_partners = array_merge($partners, $partners, $partners, $partners);
                 foreach ($marquee_partners as $partner): ?>
-                    <a href="partners.php" title="<?php echo htmlspecialchars($partner['company_name']); ?>"
+                    <a href="partners" title="<?php echo htmlspecialchars($partner['company_name']); ?>"
                         class="flex-shrink-0 grayscale hover:grayscale-0 hover:scale-110 opacity-60 hover:opacity-100 transition-all duration-300">
                         <img src="uploads/partners/<?php echo htmlspecialchars($partner['logo']); ?>"
                             alt="<?php echo htmlspecialchars($partner['company_name']); ?>"
@@ -185,7 +227,7 @@ try {
                     <p class="text-slate-500 leading-relaxed text-sm mb-6 line-clamp-3">
                         <?php echo htmlspecialchars($service['details']); ?>
                     </p>
-                    <a href="services.php"
+                    <a href="services"
                         class="text-secondary font-semibold flex items-center gap-1 hover:gap-2 transition-all">Read More <i
                             class="ph ph-arrow-right"></i></a>
                 </div>
@@ -193,7 +235,7 @@ try {
         </div>
 
         <div class="text-center mt-12 animate-on-scroll">
-            <a href="services.php"
+            <a href="services"
                 class="inline-flex items-center gap-2 border-2 border-secondary text-secondary hover:bg-secondary hover:text-white px-8 py-3 rounded-full font-bold transition">
                 View All Services <i class="ph ph-arrow-right"></i>
             </a>
@@ -246,14 +288,14 @@ try {
                     <p class="text-slate-500 mt-4 leading-relaxed">Choose from the finest universities in the world's most
                         sought-after study destinations.</p>
                 </div>
-                <a href="destinations.php"
+                <a href="destinations"
                     class="hidden md:flex items-center gap-2 text-secondary font-bold hover:text-accent transition">View All
                     <i class="ph ph-arrow-right"></i></a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <?php foreach (array_slice($countries, 0, 4) as $index => $country): ?>
-                    <a href="country-view.php?id=<?php echo urlencode($country['id']); ?>"
+                    <a href="country-<?php echo $country['id']; ?>-<?php echo slugify($country['country_name']); ?>"
                         class="block group relative rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition duration-500 h-[380px] animate-on-scroll"
                         style="animation-delay: <?php echo ($index * 100); ?>ms;">
                         <?php if ($country['country_image']): ?>
@@ -289,7 +331,7 @@ try {
                 <?php endforeach; ?>
             </div>
             <div class="mt-8 text-center md:hidden">
-                <a href="destinations.php"
+                <a href="destinations"
                     class="inline-flex items-center gap-2 text-secondary font-bold hover:text-accent transition">View All <i
                         class="ph ph-arrow-right"></i></a>
             </div>
@@ -327,7 +369,7 @@ try {
                         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
                             <?php if(!empty($country_unis)): ?>
                                 <?php foreach($country_unis as $uni): ?>
-                                    <a href="university-view.php?id=<?php echo $uni['id']; ?>" title="<?php echo htmlspecialchars($uni['university_name']); ?>" class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl hover:border-secondary transition duration-300 flex items-center justify-center aspect-[4/3] group relative overflow-hidden">
+                                    <a href="university-<?php echo $uni['id']; ?>-<?php echo slugify($uni['university_name']); ?>" title="<?php echo htmlspecialchars($uni['university_name']); ?>" class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl hover:border-secondary transition duration-300 flex items-center justify-center aspect-[4/3] group relative overflow-hidden">
                                         <?php if(!empty($uni['university_logo'])): ?>
                                             <img src="uploads/universities/<?php echo htmlspecialchars($uni['university_logo']); ?>" alt="<?php echo htmlspecialchars($uni['university_name']); ?>" class="max-w-[80%] max-h-[80%] object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-500">
                                         <?php else: ?>
@@ -348,7 +390,7 @@ try {
             </div>
             
             <div class="mt-12 text-center animate-on-scroll delay-200">
-                <a href="universities.php" class="inline-flex items-center gap-2 border-2 border-secondary text-secondary hover:bg-secondary hover:text-white px-8 py-3 rounded-full font-bold transition shadow-sm">
+                <a href="universities" class="inline-flex items-center gap-2 border-2 border-secondary text-secondary hover:bg-secondary hover:text-white px-8 py-3 rounded-full font-bold transition shadow-sm">
                     View All Universities <i class="ph ph-arrow-right"></i>
                 </a>
             </div>
@@ -427,7 +469,7 @@ try {
                         class="ph-fill ph-check-circle text-secondary text-xl"></i> End-to-end guidance from admission
                     to landing.</li>
             </ul>
-            <a href="about.php"
+            <a href="about"
                 class="bg-white border text-center border-slate-200 text-slate-600 hover:border-secondary hover:text-secondary px-8 py-3.5 rounded-full font-bold shadow-sm transition flex items-center gap-2 inline-flex">
                 More About Us <i class="ph ph-arrow-right font-bold"></i>
             </a>
@@ -496,7 +538,7 @@ try {
                     <h2 class="text-3xl md:text-4xl font-bold text-dark">Meet Us at <span
                             class="text-secondary">Events</span></h2>
                 </div>
-                <a href="events.php"
+                <a href="events"
                     class="hidden md:flex items-center gap-2 text-secondary font-bold hover:text-accent transition">All
                     Events <i class="ph ph-arrow-right"></i></a>
             </div>
@@ -532,7 +574,7 @@ try {
                                 <i class="ph ph-clock text-secondary"></i>
                                 <?php echo date('h:i A', strtotime($event['date_time'])); ?>
                             </div>
-                            <a href="events.php?id=<?php echo $event['id']; ?>"
+                            <a href="event-<?php echo $event['id']; ?>-<?php echo slugify($event['title']); ?>"
                                 class="mt-auto border-t border-slate-200 pt-4 text-secondary font-bold hover:text-accent transition flex items-center gap-1"><i
                                     class="ph ph-info"></i> Event Details</a>
                         </div>
@@ -552,7 +594,7 @@ try {
                 <h2 class="text-3xl md:text-4xl font-bold text-dark">Latest Insights & <span
                         class="text-secondary">Stories</span></h2>
             </div>
-            <a href="blog.php"
+            <a href="blog"
                 class="hidden md:flex items-center gap-2 text-secondary font-bold hover:text-accent transition">
                 Read All Articles <i class="ph ph-arrow-right"></i>
             </a>
@@ -586,7 +628,7 @@ try {
                         <h3
                             class="text-xl font-bold text-dark mb-3 leading-snug group-hover:text-secondary transition line-clamp-2">
                             <a
-                                href="blog-details.php?id=<?php echo $blog['id']; ?>"><?php echo htmlspecialchars($blog['title']); ?></a>
+                                href="blog-<?php echo $blog['id']; ?>-<?php echo slugify($blog['title']); ?>"><?php echo htmlspecialchars($blog['title']); ?></a>
                         </h3>
                         <!-- Strip HTML tags to show plain text preview -->
                         <p class="text-slate-500 text-sm mb-6 line-clamp-3">
@@ -603,7 +645,7 @@ try {
                                         class="ph-fill ph-share-network text-slate-400"></i>
                                     <?php echo $blog['shares']; ?></span>
                             </div>
-                            <a href="blog-details.php?id=<?php echo $blog['id']; ?>"
+                            <a href="blog-<?php echo $blog['id']; ?>-<?php echo slugify($blog['title']); ?>"
                                 class="inline-block border border-slate-200 text-slate-600 hover:border-secondary hover:text-white hover:bg-secondary px-4 py-1.5 rounded-full text-xs font-semibold transition">Read
                                 Article</a>
                         </div>
@@ -613,7 +655,7 @@ try {
         </div>
 
         <div class="mt-8 text-center md:hidden">
-            <a href="blog.php"
+            <a href="blog"
                 class="inline-flex items-center gap-2 text-secondary font-bold hover:text-accent transition">
                 Read All Articles <i class="ph ph-arrow-right"></i>
             </a>
@@ -631,7 +673,7 @@ try {
         <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Ready to Start Your Journey?</h2>
         <p class="text-white/80 text-lg max-w-2xl mx-auto mb-10">Get in touch with our expert counselors today and take
             the first step towards securing your admission at a top global university.</p>
-        <a href="contact.php"
+        <a href="contact"
             class="bg-white text-secondary hover:bg-slate-50 px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl transition transform hover:-translate-y-1 inline-flex items-center gap-2">
             Book a Free Consultation <i class="ph ph-calendar-check"></i>
         </a>
@@ -661,5 +703,6 @@ try {
         });
     });
 </script>
+
 
 <?php require_once __DIR__ . '/components/footer.php'; ?>

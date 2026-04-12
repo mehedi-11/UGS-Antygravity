@@ -35,9 +35,9 @@ $active_country = $_GET['country'] ?? 'All';
         <p class="text-lg text-slate-300 max-w-2xl mx-auto mb-8 animate-on-scroll delay-100">Explore our extensive network of partner institutions across the globe and find the perfect academic fit for your future.</p>
         
         <div class="flex items-center justify-center gap-2 text-slate-400 text-sm font-bold uppercase tracking-widest animate-on-scroll delay-200 mt-4">
-            <a href="index.php" class="hover:text-secondary transition text-slate-300">Home</a>
+            <a href="index" class="hover:text-secondary transition text-slate-300">Home</a>
             <i class="ph ph-caret-right"></i>
-            <a href="destinations.php" class="hover:text-secondary transition text-slate-300">Destinations</a>
+            <a href="destinations" class="hover:text-secondary transition text-slate-300">Destinations</a>
             <i class="ph ph-caret-right"></i>
             <span class="text-secondary">Universities</span>
         </div>
@@ -92,7 +92,7 @@ $active_country = $_GET['country'] ?? 'All';
                         </p>
                         
                         <h3 class="text-xl font-bold text-slate-800 mb-6 group-hover:text-secondary transition min-h-[3.5rem] flex items-center justify-center leading-snug w-full">
-                            <a href="university-view.php?id=<?php echo $uni['id']; ?>" class="before:absolute before:inset-0"><?php echo htmlspecialchars($uni['university_name']); ?></a>
+                            <a href="university-<?php echo $uni['id']; ?>-<?php echo slugify($uni['university_name']); ?>" class="before:absolute before:inset-0"><?php echo htmlspecialchars($uni['university_name']); ?></a>
                         </h3>
                         
                         <div class="mt-auto pt-4 w-full border-t border-slate-100 flex items-center justify-center">
@@ -133,7 +133,7 @@ $active_country = $_GET['country'] ?? 'All';
     <div class="container mx-auto px-4 max-w-3xl relative z-10">
         <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">Didn't find what you were looking for?</h2>
         <p class="text-slate-400 text-lg mb-10 font-light">We represent hundreds of exclusive universities globally. Connect with an expert counselor today, and we will tailor-match a program specifically to your profile.</p>
-        <a href="appointment.php" class="bg-secondary hover:bg-accent text-white px-10 py-4 rounded-full font-bold transition shadow-lg shadow-secondary/30 inline-flex items-center gap-2 text-lg hover:-translate-y-1 transform duration-300">
+        <a href="appointment" class="bg-secondary hover:bg-accent text-white px-10 py-4 rounded-full font-bold transition shadow-lg shadow-secondary/30 inline-flex items-center gap-2 text-lg hover:-translate-y-1 transform duration-300">
             Book a Free Session <i class="ph ph-calendar-check text-xl"></i>
         </a>
     </div>
