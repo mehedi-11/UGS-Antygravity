@@ -151,7 +151,7 @@ if ($id > 0) {
     // ---------------------------------------------------------
     $events = [];
     try {
-        $events = $pdo->query("SELECT * FROM event ORDER BY date_time ASC")->fetchAll(PDO::FETCH_ASSOC);
+        $events = $pdo->query("SELECT * FROM event ORDER BY position ASC")->fetchAll(PDO::FETCH_ASSOC);
     } catch (Exception $e) {}
     ?>
     <!-- Page Header -->

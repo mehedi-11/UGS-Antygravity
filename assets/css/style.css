@@ -103,3 +103,34 @@ body {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); } 
 }
+
+/* Process Specific Marquee */
+.process-marquee-container {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding: 2rem 0;
+}
+
+.process-marquee-container:hover .process-marquee-content {
+    animation-play-state: paused;
+}
+
+.process-marquee-content {
+    display: flex;
+    white-space: normal; /* Allow text wrapping inside cards */
+    animation: scroll-process 60s linear infinite; /* Slower for reading */
+    gap: 2.5rem; 
+    padding: 0 1.25rem;
+}
+
+.process-card-item {
+    flex-shrink: 0;
+    width: 320px; /* Fixed width for consistent scrolling */
+}
+
+@keyframes scroll-process {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+}

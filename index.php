@@ -25,7 +25,7 @@ try {
 
 $working_process = [];
 try {
-    $working_process = $pdo->query("SELECT * FROM working_process ORDER BY position ASC LIMIT 4")->fetchAll();
+    $working_process = $pdo->query("SELECT * FROM working_process ORDER BY position ASC")->fetchAll();
 } catch (Exception $e) {
 }
 
@@ -248,27 +248,30 @@ try {
 <!-- WORKING PROCESS -->
 <?php if (!empty($working_process)): ?>
     <section class="py-20 bg-slate-50 relative overflow-hidden text-center">
-        <!-- Curved Dotted Path Decoration (hidden on mobile) -->
-        <div
-            class="hidden lg:block absolute top-[60%] left-0 w-full h-[2px] border-t-2 border-dashed border-secondary/30 z-0">
-        </div>
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="max-w-2xl mx-auto mb-16 animate-on-scroll">
+        <div class="container mx-auto px-4 relative z-10 mb-12">
+            <div class="max-w-2xl mx-auto animate-on-scroll">
                 <h4 class="text-secondary font-bold tracking-wider uppercase text-sm mb-2">How It Works</h4>
-                <h2 class="text-3xl md:text-4xl font-bold text-dark">Our Simple <span class="text-secondary">Process</span>
-                </h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark">Our Simple <span class="text-secondary">Process</span></h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
-                <?php foreach ($working_process as $index => $wp): ?>
-                    <div class="relative group animate-on-scroll" style="animation-delay: <?php echo ($index * 100); ?>ms;">
-                        <!-- Number Badge -->
-                        <div
-                            class="w-16 h-16 bg-white border-4 border-slate-50 text-secondary rounded-full flex items-center justify-center font-black text-2xl shadow-lg mx-auto mb-6 relative z-10 group-hover:bg-secondary group-hover:text-white transition">
-                            <?php echo $index + 1; ?>
+        </div>
+
+        <div class="process-marquee-container group">
+            <div class="process-marquee-content">
+                <?php 
+                // Multiply items for a seamless infinite loop
+                $marquee_items = array_merge($working_process, $working_process, $working_process);
+                foreach ($marquee_items as $index => $wp): 
+                    $original_index = $index % count($working_process);
+                ?>
+                    <div class="process-card-item relative group/card">
+                        <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm group-hover/card:shadow-xl transition duration-500 min-h-[250px] flex flex-col items-center">
+                            <!-- Number Badge -->
+                            <div class="w-16 h-16 bg-slate-50 border-4 border-white text-secondary rounded-full flex items-center justify-center font-black text-2xl shadow-md mb-6 relative z-10 group-hover/card:bg-secondary group-hover/card:text-white transition group-hover/card:scale-110">
+                                <?php echo $original_index + 1; ?>
+                            </div>
+                            <h3 class="text-lg font-bold text-dark mb-3 group-hover/card:text-secondary transition"><?php echo htmlspecialchars($wp['title']); ?></h3>
+                            <p class="text-slate-500 text-sm leading-relaxed text-center"><?php echo htmlspecialchars($wp['details']); ?></p>
                         </div>
-                        <h3 class="text-lg font-bold text-dark mb-3"><?php echo htmlspecialchars($wp['title']); ?></h3>
-                        <p class="text-slate-500 text-sm leading-relaxed px-4"><?php echo htmlspecialchars($wp['details']); ?>
-                        </p>
                     </div>
                 <?php endforeach; ?>
             </div>

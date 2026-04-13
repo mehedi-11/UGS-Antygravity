@@ -2,6 +2,7 @@
 // components/header.php
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../config/functions.php';
+require_once __DIR__ . '/../config/tracker.php';
 
 // Fetch global state from about table
 $about = null;
